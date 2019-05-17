@@ -1,0 +1,62 @@
+<%= form_for @wine do |f|%>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+<p>
+  <%= f.label :producer %>
+  <%= f.text_field :producer %>
+</p>
+<p>
+  <%= f.label :wine_name %>
+  <%= f.text_field :wine_name %>
+</p>
+
+<p>
+  <%= f.label :vintage %>
+  <%= f.number_field :vintage %>
+</p>
+<p>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+</p>
+<p>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+</p>
+<p>
+  <%= f.label :type %><br>
+  <%= select_tag :type, "<option>Red</option><option>White</option><option>Rose</option><option>Sparking</option><option>Other</option>".html_safe, multiple: true %>
+</p>
+<p>
+  <%= f.label :price_range %><br>
+  <%= select_tag :price_range, "<option>Less than $10</option><option>$10 - $15</option>$15 - $20<option>$20 - $30</option><option>$30 - $40</option><option>$40-$50</option>$50 - $60<option>$60 - $70</option>$70 - 80<option>$80 - $90</option>$90 - $100<option></option><option>$100+</option>".html_safe, multiple: true %>
+</p>
+
+<p>
+  <%= f.label :varietal_id %><br />
+  <%= f.collection_select :varietal_id, Varietal.order(:varietal_name), :id, :varietal_name, include_blank: true %>
+</p>
+
+
+<p>
+  <%= f.label :country_id %><br />
+  <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name, include_blank: true %>
+</p>
+
+<p>
+  <%= f.label :organic %>
+  <%= check_box_tag :organic %>
+</p>
+
+<p>
+  <%= f.label :biodynamic %>
+  <%= check_box_tag :biodynamic %>
+</p>
+
+<p>
+  <%= f.label :favorite %>
+  <%= check_box_tag :favorite %>
+</p>
+
+
+  <%= f.submit %>
+<% end %>
