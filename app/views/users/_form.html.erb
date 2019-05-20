@@ -1,0 +1,9 @@
+<%# from lab on has_secure_password, would need to add password confirmation to
+strong params in controller %>
+
+<%= form_for :user, url: '/users' do |f| %>
+  Username: <%= f.text_field :username %>
+  Password: <%= f.password_field :password %>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.submit "Submit" %>
+<% end %>
