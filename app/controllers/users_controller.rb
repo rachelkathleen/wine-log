@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def home
     @user = current_user
     unless logged_in?
-      redirect_to '/welcome'
+      redirect_to '/home'
     end
   end
 
