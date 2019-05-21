@@ -1,4 +1,7 @@
 class WinesController < ApplicationController
+  before_action :check_for_logged_in
+
+
   def index
     if params[:user_id]
       @wines = User.find(params[:user_id]).wines
