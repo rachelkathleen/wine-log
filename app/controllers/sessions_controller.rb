@@ -15,13 +15,13 @@ class SessionsController < ApplicationController
     end
   end
 
-  def home
+  def welcome
   end
 
   #logout
   def destroy
     session.clear
-    redirect_to '/'
+    redirect_to '/goodbye'
   end
 
 
