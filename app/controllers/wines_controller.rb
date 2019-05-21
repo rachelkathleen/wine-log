@@ -14,9 +14,12 @@ class WinesController < ApplicationController
     @wine = Wine.new
   end
 
+  def show
+    @wine = Wine.find(params[:id])
+  end
+
   def create
     @wine = Wine.new(wine_params)
-    binding.pry
     if @wine.save
       redirect_to @wine
     else
