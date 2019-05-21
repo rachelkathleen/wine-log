@@ -1,0 +1,6 @@
+<h1>List of Wine Aromas</h1>
+<ul>
+  <% Aroma.all.each do |aroma| %>
+  <li><%= aroma.aroma_name %></li>
+  <% end %>
+</ul>
