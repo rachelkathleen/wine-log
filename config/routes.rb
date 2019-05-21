@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'sessions#welcome'
-  root 'sessions#goodbye'
+  get '/goodbye' => 'sessions#goodbye'
 
   # root 'learn#aromas'
   # root 'learn#glossary'
