@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
 
   resources :wines
-  resources :users
+  resources :users do
+    resources :wines, only: [:show, :index, :new]
+  end
 end
