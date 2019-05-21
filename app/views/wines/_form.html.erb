@@ -28,7 +28,7 @@
 </p>
 <p>
   <%= f.label :price_range %><br>
-  <%= select_tag :price_range, "<option>Less than $10</option><option>$10 - $15</option>$15 - $20<option>$20 - $30</option><option>$30 - $40</option><option>$40-$50</option>$50 - $60<option>$60 - $70</option>$70 - 80<option>$80 - $90</option>$90 - $100<option></option><option>$100+</option>".html_safe, multiple: true %>
+  <%= select_tag :price_range, "<option>Less than $10</option><option>$10 - $15</option>$15 - $20<option>$20 - $30</option><option>$30 - $40</option><option>$40-$50</option>$50 - $60<option>$60 - $70</option>$70 - 80<option>$80 - $90</option>$90 - $100<option></option><option>$100+</option>".html_safe, multiple: false %>
 </p>
 
 <p>
@@ -50,6 +50,7 @@
 <p>
   <%= f.label :biodynamic %>
   <%= check_box_tag :biodynamic %>
+
 </p>
 
 <p>

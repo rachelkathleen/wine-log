@@ -3,12 +3,14 @@
 <h3>View cellar (view all wines)</h3>
 <ul>
   <% @user.wines.each do |wine| %>
-    <li><%= wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+
+    <li><%=wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+
   <% end %>
 </ul>
 
 <h3>Make a new wine</h3>
-<%= link_to new_user_wine_path %>
+<%= link_to "Add another Wine", new_user_wine_path(@user.id) %>
 
 
 
