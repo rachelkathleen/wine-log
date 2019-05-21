@@ -1,9 +1,18 @@
 <h1>Hello <%= @user.first_name %></h1>
 
+<h3>View cellar (view all wines)</h3>
+<ul>
+  <% @user.wines.each do |wine| %>
+    <li><%= wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+  <% end %>
+</ul>
+
+<h3>Make a new wine</h3>
+<%= link_to new_user_wine_path %>
+
+
 
 <ul>
-  <li>View cellar (view all wines)</li>
-  <li>Make a new wine</li>
   <li>view insights (scope methods)</li>
   <li>update profile</li>
 </ul>
