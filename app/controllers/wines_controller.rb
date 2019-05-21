@@ -16,6 +16,9 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
+    if params[:user_id]
+      @user.id = @wine.user_id
+    end
   end
 
   def create
