@@ -9,7 +9,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Country: <%= @wine.country.country_name %></li>
     <li class="list-group-item">Vintage: <%= @wine.vintage %></li>
-    <li class="list-group-item">Type: <%= @wine.type %></li>
+    <li class="list-group-item">Type: <%= @wine.wine_type %></li>
     <li class="list-group-item">Price Range: <%= @wine.price_range %></li>
     <li class="list-group-item">Varietal: <%= @wine.varietal.varietal_name %></li>
     <li class="list-group-item">Favorite: <%= @wine.favorite %></li>
@@ -17,6 +17,6 @@
   </ul>
   <div class="card-body">
     <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a>
-    <a href="#" class="card-link">Edit this wine</a>
+    <a href="/wines/<%= @wine.id %>/edit/" class="card-link">Edit this wine</a>
   </div>
 </div>

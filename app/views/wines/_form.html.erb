@@ -38,7 +38,7 @@
 
 <p>
   <%= f.label :country_id %><br />
-  <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name, multiple: false, include_blank: true %>
+  <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name, multiple: false %>
 </p>
 
 <p>
@@ -57,6 +57,14 @@
   <%= f.check_box :favorite %>
 </p>
 
+<p>
+  <%= f.label :aroma_ids, "Something else" %>
+  <%= f.collection_select :aroma_ids, Aroma.all, :id, :aroma_name,  {prompt: "Select Aromas"}, { multiple: true} %><br>
+</p>
 
-  <%= f.submit %>
+
+
+
+
+    <%= f.submit %>
 <% end %>

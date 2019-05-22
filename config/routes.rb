@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :wines
+  resources :users do
+    resources :wines, only: [:show, :index, :new, :create, :edit]
+  end
+  resources :wine_aromas, only: [:new, :create]
+
+
   root 'sessions#welcome'
   get '/goodbye' => 'sessions#goodbye'
 
@@ -18,8 +25,4 @@ Rails.application.routes.draw do
 
 
 
-  resources :wines
-  resources :users do
-    resources :wines, only: [:show, :index, :new]
-  end
 end
