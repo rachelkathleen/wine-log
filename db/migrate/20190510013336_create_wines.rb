@@ -5,7 +5,7 @@ class CreateWines < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :producer
       t.string :wine_name
-      t.string :type
+      t.string :wine_type
       t.integer :country_id
       t.boolean :biodynamic
       t.boolean :organic

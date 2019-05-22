@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_005925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aroma_posts", force: :cascade do |t|
-    t.integer "aroma_id"
-    t.integer "wine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "aromas", force: :cascade do |t|
     t.string "aroma_name"
     t.datetime "created_at", null: false
@@ -37,13 +30,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_005925) do
   create_table "regions", force: :cascade do |t|
     t.string "region_name"
     t.integer "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tasting_posts", force: :cascade do |t|
-    t.integer "tasting_term_id"
-    t.integer "wine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,12 +57,26 @@ ActiveRecord::Schema.define(version: 2019_05_17_005925) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wine_aromas", force: :cascade do |t|
+    t.integer "aroma_id"
+    t.integer "wine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wine_tasting_terms", force: :cascade do |t|
+    t.integer "tasting_term_id"
+    t.integer "wine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "wines", force: :cascade do |t|
     t.integer "varietal_id"
     t.integer "user_id"
     t.string "producer"
     t.string "wine_name"
-    t.string "type"
+    t.string "wine_type"
     t.integer "country_id"
     t.boolean "biodynamic"
     t.boolean "organic"

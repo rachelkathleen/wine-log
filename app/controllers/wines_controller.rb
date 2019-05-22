@@ -49,8 +49,8 @@ class WinesController < ApplicationController
   private
 
   def wine_params # strong parameters
-    params.require(:wine).permit(:varietal_id, :producer, :wine_name, :type,
+    params.require(:wine).permit(:varietal_id, :producer, :wine_name, :wine_type,
       :country_id, :subregion_id, :organic, :biodynamic, :date_added, :price_range,
-      :user_id, :vintage, :rating, :notes, :favorite)
+      :user_id, :vintage, :rating, :notes, :favorite, :checkbox_value)
   end
 end
