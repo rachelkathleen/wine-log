@@ -58,8 +58,13 @@
 </p>
 
 <p>
-  <%= f.label :aroma_ids, "Something else" %>
-  <%= f.collection_select :aroma_ids, Aroma.all, :id, :aroma_name,  {prompt: "Select Aromas"}, { multiple: true} %><br>
+  <%= f.label :aroma_ids, "Wine Aromas" %>
+  <%= f.collection_select :aroma_ids, Aroma.order(:aroma_name), :id, :aroma_name,  {prompt: " "}, { multiple: true} %><br>
+</p>
+
+<p>
+  <%= f.label :aroma_ids, "Tasting Terms" %>
+  <%= f.collection_select :tasting_term_ids, TastingTerm.all, :id, :term,  {prompt: " "}, { multiple: true} %><br>
 </p>
 
 
