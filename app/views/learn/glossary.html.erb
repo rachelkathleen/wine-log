@@ -1,0 +1,6 @@
+<h1>Glossary of Wine Tasting Terms</h1>
+<ul>
+  <% TastingTerm.all.each do |t| %>
+  <li><%= t.term %>: <%= t.definition %> </li>
+  <% end %>
+</ul>
