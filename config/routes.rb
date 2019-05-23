@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :wines
-  resources :users do
-    resources :wines, only: [:show, :index, :new, :create, :edit]
+  resources :wines, only: [:new, :create, :show, :edit]
+  resources :users, only: [:new, :create, :edit]
+
+  resources :countries, only: [:index, :new, :create] do
+    resources :wines, only: [:index, :new]
   end
-  resources :wine_aromas, only: [:new, :create]
 
 
   root 'sessions#welcome'
