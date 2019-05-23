@@ -16,7 +16,38 @@
 
   </ul>
   <div class="card-body">
-    <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a>
+    <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a><br>
     <a href="/wines/<%= @wine.id %>/edit/" class="card-link">Edit this wine</a>
   </div>
+</div>
+
+<div>
+  Aromas:
+  <ul>
+    <% @wine.aromas.each do |aroma| %>
+    <li><%= aroma.aroma_name %></li>
+    <% end %>
+  </ul>
+  Tasting Terms:
+  <ul>
+    <% @wine.tasting_terms.each do |term| %>
+    <li><%= term.term %></li>
+    <% end %>
+  </ul>
+  <ul>
+    <li><%= @wine.producer %></li>
+    <li><%= @wine.wine_name %></li>
+    <li><%= @wine.vintage %></li>
+    <li><%= @wine.varietal.varietal_name %></li>
+    <li><%= @wine.country.country_name %></li>
+    <li><%= @wine.wine_type %></li>
+    <li><%= @wine.rating %></li>
+    <li><%= @wine.price_range %></li>
+    <li>Organic? <%= @wine.organic %></li>
+    <li>Biodynamic? <%= @wine.biodynamic %></li>
+    <li>Organic? <%= @wine.favorite %></li>
+  </ul>
+
+  <p><%= @wine.notes %></p>
+
 </div>

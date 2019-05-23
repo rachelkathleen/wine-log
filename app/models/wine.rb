@@ -7,6 +7,9 @@ class Wine < ApplicationRecord
   has_many :wine_tasting_terms
   has_many :tasting_terms, through: :wine_tasting_terms
 
+  accepts_nested_attributes_for :country
+  accepts_nested_attributes_for :varietal
+
   validates :varietal_id, :country_id, :vintage, :user_id, :producer, :wine_name, presence: true
   validates :rating, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
 end
