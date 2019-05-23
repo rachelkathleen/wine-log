@@ -10,7 +10,11 @@
     <%= f.label :wine_name %>
     <%= f.text_field :wine_name, placeholder: "or varietal, if none" %>
   </div>
-  <br>
+</div>
+<br>
+
+
+<div class="form-row align-items-center">
   <div class="col-auto">
     <%= f.label :vintage %>
     <%= f.text_field :vintage %>
@@ -50,7 +54,8 @@
 
 
 </div>
-
+<br>
+<br>
 <div class="form-row align-items-center">
   <div class="col-auto">
     <%= f.label :aroma_ids, "Wine Aromas" %><br>
@@ -63,18 +68,18 @@
     <%= f.collection_select :tasting_term_ids, TastingTerm.all, :id, :term,  {prompt: " "}, { multiple: true, class:"custom-select", size:"5"} %><br>
 
     <small id="HelpBlock" class="form-text text-muted">
-      Tasting terms are used to decribe the taste of a wine, or they way it can feel in your mouth.<br>
+      Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth.
       Look at the <%= link_to "glossary", glossary_path %> to learn what they mean.</small>
   </div>
 </div>
 <br>
-
+<br>
 <div class="form-row align-items-center ">
   <div class="col-auto">
   <label>Select a Varietal:</label>
   <% f.label :varietal_id %><br />
   <%= f.collection_select :varietal_id, Varietal.order(:varietal_name), :id, :varietal_name, {prompt: " "}, { multiple: false, class:"custom-select", size:"5"} %><br>
-  <br><label>Or create a new varietal</label>
+  <br><label>Add a new varietal</label>
   <%= f.fields_for :varietal, Varietal.new do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= varietal_attr.text_field :varietal_name %>
@@ -85,7 +90,7 @@
     <% f.label :country_id %><br />
     <%= f.collection_select :country_id, Country.order(:country_name), :id, :country_name, {prompt: " "}, { multiple: false, class:"custom-select", size:"5"} %><br>
 
-    <br><label>Or create a new country</label>
+    <br><label>Add a new country</label>
     <%= f.fields_for :country, Country.new do |country_attr|%>
         <%= country_attr.label :name, "Country:" %>
         <%= country_attr.text_field :country_name %>
@@ -93,7 +98,7 @@
   </div>
 </div>
 
-<div class="form-row align">
+<div class="form-row align-items-center">
   <div class="col-auto">
     <%= f.label :notes, "Additional Notes" %><br>
     <%= f.text_area :notes, {placeholder: "It's good to make note of the color, decanting, food pairing, other varietals (if the wine is a blend) or anything to help you remember your favorites!", cols:"100%", rows:"10"} %>
