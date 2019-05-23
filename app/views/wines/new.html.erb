@@ -62,14 +62,14 @@
     <%= f.collection_select :aroma_ids, Aroma.order(:aroma_name), :id, :aroma_name,  {prompt: " "}, { multiple: true, class:"custom-select", size:"5"}%><br>
     <small id="HelpBlock" class="form-text text-muted">
   <%= link_to "Aromas", aromas_path %> refer to what you can smell in a wine - you can choose one or many.</small>
+  <small id="HelpBlock" class="form-text text-muted">   <br></small>
   </div>
   <div class="col-auto">
     <%= f.label :tasting_term_ids, "Tasting terms" %><br>
     <%= f.collection_select :tasting_term_ids, TastingTerm.all, :id, :term,  {prompt: " "}, { multiple: true, class:"custom-select", size:"5"} %><br>
 
-    <small id="HelpBlock" class="form-text text-muted">
-      Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth.
-      Look at the <%= link_to "glossary", glossary_path %> to learn what they mean.</small>
+    <small id="HelpBlock" class="form-text text-muted">Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth.</small>
+    <small id="HelpBlock" class="form-text text-muted">Look at the <%= link_to "glossary", glossary_path %> to learn what they mean.</small>
   </div>
 </div>
 <br>
