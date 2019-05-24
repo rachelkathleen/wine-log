@@ -1,5 +1,4 @@
 <%= form_for @wine do |f|%>
-
   <%= f.hidden_field :user_id, :value => current_user.id %>
 <p>
   <%= f.label :producer %>
@@ -23,7 +22,7 @@
 <div>
   <h5>Or create a new varietal:</h5>
   <%= f.fields_for :varietal, Varietal.new do |varietal_attr|%>
-      <%= varietal_attr.label :name, "Country:" %>
+      <%= varietal_attr.label :name, "Varietal:" %>
       <%= varietal_attr.text_field :varietal_name %>
   <% end %>
 </div>
