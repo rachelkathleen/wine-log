@@ -1,4 +1,5 @@
 <%= form_for @wine do |f|%>
+<%= render partial: 'layouts/errors', locals: {object: @wine} %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
 
 <div class="form-row align-items-center">

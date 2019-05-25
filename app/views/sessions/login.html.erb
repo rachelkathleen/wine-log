@@ -1,3 +1,5 @@
+<%= flash[:error] %>
+
 <%= form_for @user, url: '/login' do |f| %>
   <div class="form-group">
     <%= f.label :user_name %>
