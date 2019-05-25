@@ -4,13 +4,13 @@
 <ul>
   <% @user.wines.each do |wine| %>
 
-    <li><%=wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+    <li><%= link_to wine_path(wine) %><%=wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
 
   <% end %>
 </ul>
 
 <h3>Make a new wine</h3>
-<%= link_to "Add another Wine", new_user_wine_path(@user.id) %>
+<%= link_to "Add another Wine", new_wine_path(@user.id) %>
 
 
 
