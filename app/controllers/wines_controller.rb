@@ -18,8 +18,8 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
-    if params[:user_id]
-      @user.id = @wine.user_id
+    if params[:country_id]
+      @country.id = @wine.country_id
     end
   end
 

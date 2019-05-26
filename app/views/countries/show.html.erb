@@ -1,0 +1,15 @@
+<h1>Wines & Varietals found in <%= @country.country_name  %></h1>
+
+<h3><%= link_to "Wines:", country_wines_path(@country) %></h3>
+<ul>
+  <% @country.wines.each do |wine| %>
+    <li><%= link_to wine.wine_name, country_wine_path(wine) %></li>
+  <% end %>
+</ul>
+
+<h3>Varietals:</h3>
+<ul>
+  <% @country.varietals.each do |v| %>
+    <li><%= v.varietal_name %></li>
+  <% end %>
+</ul>
