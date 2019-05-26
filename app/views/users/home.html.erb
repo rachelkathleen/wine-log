@@ -13,7 +13,10 @@
 <%= link_to "Add another Wine", new_wine_path(@user.id) %>
 
 
-
+<h4>Your Favorite wines:</h4>
+<% @user.wines.is_favorite.each do |wine| %>
+    <p><%= link_to wine.producer, wine_path(wine) %></p>
+<% end %>
 <ul>
   <li>view insights (scope methods)</li>
   <li>update profile</li>

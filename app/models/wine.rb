@@ -12,4 +12,6 @@ class Wine < ApplicationRecord
 
   validates :varietal_id, :country_id, :vintage, :user_id, :producer, :wine_name, presence: true
   validates :rating, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
+
+  scope :is_favorite, -> {where(favorite: true)}
 end
