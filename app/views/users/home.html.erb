@@ -4,7 +4,7 @@
 <ul>
   <% @user.wines.each do |wine| %>
 
-    <li><%= link_to wine_path(wine) %><%=wine.producer %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+    <li><%= link_to wine.producer, wine_path(wine) %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
 
   <% end %>
 </ul>
