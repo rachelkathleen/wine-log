@@ -5,7 +5,7 @@ module WinesHelper
 
   def show_image
     if @wine.picture.attached?
-      "image_tag(@wine.picture, width: 200)"
+      "image_tag(@wine.picture)"
     else
       "https://www.bruniglass.com/assets/Uploads/products/14973.jpg"
     end
