@@ -29,7 +29,7 @@ class WinesController < ApplicationController
     if @wine.save
       redirect_to @wine
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -39,16 +39,19 @@ class WinesController < ApplicationController
 
   def update
     @wine = Wine.find(params[:id])
-    @wine.update(wine_params)
-
-    redirect_to wine_path(@wine)
+    if @wine.update(wine_params)
+      redirect_to wine_path(@wine)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @wine = Wine.find(params[:id])
     @wine.destroy
-    redirect_to `/`
+    redirect_to root_path
   end
+  
   private
 
   def wine_params # strong parameters
