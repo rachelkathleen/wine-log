@@ -3,12 +3,6 @@
 <%= form_for(@user) do |f| %>
   <%= render partial: 'layouts/errors', locals: {object: @user} %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name, required:true %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name, required:true %>
-
   <%= f.label :user_name %>
   <%= f.text_field :user_name, required:true %>
 

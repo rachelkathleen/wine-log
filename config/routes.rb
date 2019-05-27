@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :wines
   resources :users, only: [:new, :create, :edit, :update]
+  resources :varietals
 
   resources :countries, only: [:index, :show] do
     resources :wines, only: [:index, :new, :show]

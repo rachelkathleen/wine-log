@@ -19,6 +19,4 @@ class WineAromasController < ApplicationController
         end
       end
     end
-
-
-  end
+end

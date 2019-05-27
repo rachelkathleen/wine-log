@@ -13,7 +13,9 @@ class WinesController < ApplicationController
   def new
     @wine = Wine.new
     @wine.build_varietal
-    @wine.build_country
+    # @wine.build_country
+    # @wine.varietals.build
+
   end
 
   def show
@@ -58,6 +60,6 @@ class WinesController < ApplicationController
     params.require(:wine).permit(:picture, :varietal_id, :producer, :wine_name, :wine_type,
       :country_id, :subregion_id, :organic, :biodynamic, :date_added, :price_range,
       :user_id, :vintage, :rating, :notes, :favorite, :checkbox_value, aroma_ids:[],
-      tasting_term_ids:[], varietal_attributes: [:varietal_name], country_attributes: [:country_name])
+      tasting_term_ids:[], varietals_attributes: [:varietal_name], countries_attributes: [:country_name])
   end
 end
