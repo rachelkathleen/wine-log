@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Main purple:#47204B
+Dark purple #220F24
+Light purple #ECE8ED
+Light gray #F3F3F3 */
+
+ body {background-color: #ECE8ED;}
+ div{
+  background-color: #F3F3F3;
+}
  /* Buttons
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
  .button.link_button,
@@ -40,3 +50,14 @@
    color: #220F24;
    font-family: "Yeseva One"
   }
+
+  /* Tables
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .thead-dark,
+  {
+    background-color: #ECE8ED;
+    cursor: pointer;
+
+    color: ##ECE8ED;
+    font-family: "Yeseva One"
+   }

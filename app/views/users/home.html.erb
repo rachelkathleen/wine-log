@@ -1,25 +1,57 @@
 <h1>Hello <%= @user.first_name %></h1>
 
-<h3>View cellar (view all wines)</h3>
-<ul>
-  <% @user.wines.each do |wine| %>
+<br><br>
+<h4>Your Cellar</h4><br>
 
-    <li><%= link_to wine.producer, wine_path(wine) %> - <%= wine.wine_name %> - <%= wine.vintage %></li>
+<div class="table-responsive">
+  <table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Producer</th>
+      <th scope="col">Name</th>
+      <th scope="col">Vintage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.wines.each do |wine| %>
+    <tr>
+      <td><%= link_to wine.producer, wine_path(wine) %></td>
+      <td><%= wine.wine_name %></td>
+      <td><%= wine.vintage %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 
-  <% end %>
-</ul>
+<br>
+<br>
+<h4>Your Favorite Wines</h4><br>
 
-<h3>Make a new wine</h3>
-<%= link_to "Add another Wine", new_wine_path(@user.id) %>
+<div class="table-responsive">
+  <table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Producer</th>
+      <th scope="col">Name</th>
+      <th scope="col">Vintage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.wines.is_favorite.each do |wine| %>
+    <tr>
+      <td><%= link_to wine.producer, wine_path(wine) %></td>
+      <td><%= wine.wine_name %></td>
+      <td><%= wine.vintage %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 
+<br><br>
+<div>
+  <button type="button" class="link_button"><%= link_to "Add a new Wine", new_wine_path %></button>
+  <button type="button" class="link_button"><%= link_to "Logout", logout_path %></button>
 
-<h4>Your Favorite wines:</h4>
-<% @user.wines.is_favorite.each do |wine| %>
-    <p><%= link_to wine.producer, wine_path(wine) %></p>
-<% end %>
-<ul>
-  <li>view insights (scope methods)</li>
-  <li>update profile</li>
-</ul>
-
-<%=  link_to "Log out", logout_path %>
+</div>
