@@ -1,5 +1,5 @@
 class WinesController < ApplicationController
-  before_action :check_for_logged_in
+  before_action :require_login
 
 
   def index
