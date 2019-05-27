@@ -30,6 +30,10 @@ gem 'pry'
 gem 'tux'
 gem 'nokogiri'
 gem 'google-cloud-storage', '~> 1.8', require: false
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'dotenv-rails'
+gem 'thin'
 # gem "select2-rails"
 # gem 'jquery-rails'
 

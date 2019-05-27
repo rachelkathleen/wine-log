@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   get '/home' => 'users#home'
+  get '/auth/facebook/callback' => 'sessions#fb_create'
 
 
 
