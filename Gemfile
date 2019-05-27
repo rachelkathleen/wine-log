@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'tux'
 gem 'nokogiri'
+gem 'google-cloud-storage', '~> 1.8', require: false
 # gem "select2-rails"
 # gem 'jquery-rails'
 

@@ -1,7 +1,7 @@
 
 
 <div class="card" style="width: 80%;" alignment="center">
-  <img src="https://www.garyswine.com/thumb/thumbme.html?src=/images/sites/garyswine/labels/arianna-occhipinti-sp68-rosso_1.jpg" class="card-img-top" style="width:128px;height:128px;" alt="sample image">
+  <img src="<%= image_tag(@todo.picture, width: 200) if @todo.picture.attached? %>" class="card-img-top" style="width:128px;height:128px;" alt="sample image">
   <div class="card-body">
     <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
     <p class="card-text"><%= @wine.notes %></p>

@@ -51,11 +51,11 @@ class WinesController < ApplicationController
     @wine.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def wine_params # strong parameters
-    params.require(:wine).permit(:varietal_id, :producer, :wine_name, :wine_type,
+    params.require(:wine).permit(:picture, :varietal_id, :producer, :wine_name, :wine_type,
       :country_id, :subregion_id, :organic, :biodynamic, :date_added, :price_range,
       :user_id, :vintage, :rating, :notes, :favorite, :checkbox_value, aroma_ids:[],
       tasting_term_ids:[], varietal_attributes: [:varietal_name], country_attributes: [:country_name])

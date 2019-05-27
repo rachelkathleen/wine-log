@@ -7,6 +7,8 @@ class Wine < ApplicationRecord
   has_many :wine_tasting_terms
   has_many :tasting_terms, through: :wine_tasting_terms
 
+  has_one_attached :picture
+
   accepts_nested_attributes_for :country
   accepts_nested_attributes_for :varietal
 

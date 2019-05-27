@@ -20,9 +20,10 @@ Light purple #ECE8ED
 Light gray #F3F3F3 */
 
  body {background-color: #ECE8ED;}
- div{
-  background-color: #F3F3F3;
-}
+ div {background-color: #F3F3F3;}
+ .form-row {background-color: #ECE8ED;}
+ .col-auto {background-color: #ECE8ED;}
+ .form-check {background-color: #ECE8ED;}
  /* Buttons
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
  .button.link_button,
