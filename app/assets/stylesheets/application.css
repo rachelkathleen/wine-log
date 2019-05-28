@@ -23,6 +23,7 @@ Light gray #F3F3F3 */
     font-family: Yeseva-one;
   }
 
+
 .table-responsive {
   display: block;
   /* padding: 20px; */
@@ -32,22 +33,42 @@ Light gray #F3F3F3 */
   margin-right: auto;
   margin-top: 10%;
   text-align: center;
+  border: 25px;
+  border: 3px solid #220F24
 }
 
 
+
+.card {
+  display: block;
+  /* width: auto; */
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  border: 25px;
+  border: 3px solid #220F24;
 }
+
 .main-content {
   display: block;
   border-radius: 25px;
-  border: 3px solid #220F24;
+  /* border-radius: 3px solid #220F24; */
   padding: 20px;
   width: 40%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: White;
+  background-color: #220F24
 }
+
+
+h3  {background-color: #F3F3F3;}
 
 
 /* Background color

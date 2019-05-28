@@ -1,11 +1,13 @@
+<section class="main-content">
 
-<div class="mx-auto" style="width: 200px;">
-  <h1>Hello <%= @user.first_name %></h1>
-</div>
+<%= @user.first_name %>'s Wines
+
+</section>
+
 
 
 <div class="table-responsive">
-  <h4>Your Cellar</h4>
+  <h3>Your Cellar</h3>
   <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
@@ -28,7 +30,7 @@
 
 
 <div class="table-responsive">
-  <h4>Your Favorite Wines</h4>
+  <h3>Your Favorite Wines</h3>
   <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
@@ -50,7 +52,7 @@
 </div>
 
 
-<div>
+<div class="center" align="center">
   <button type="button" class="link_button"><%= link_to "Add a new Wine", new_wine_path %></button>
   <button type="button" class="link_button"><%= link_to "Logout", logout_path %></button>
 

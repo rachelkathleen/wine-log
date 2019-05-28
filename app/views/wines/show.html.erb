@@ -1,52 +1,34 @@
-
-<div class="card" style="width: 80%;" alignment="center">
-    <%= show_image %> 
-  <div class="card-body">
-    <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
-    <p class="card-text"><%= @wine.notes %></p>
+  <div class="card" style="width: 80%;" alignment="center">
+      <%= show_image %>
+    <div class="card-body">
+      <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Country: <%= @wine.country.country_name %></li>
+      <li class="list-group-item">Vintage: <%= @wine.vintage %></li>
+      <li class="list-group-item">Type: <%= @wine.wine_type %></li>
+      <% if @wine.price_range %>
+        <li class="list-group-item">Price Range: <%= @wine.price_range %></li>
+      <% end %>
+      <li class="list-group-item">Varietal: <%= @wine.varietal.varietal_name %></li>
+      <% if @wine.favorite %>
+        <li class="list-group-item">Favorite: <%= @wine.favorite %></li>
+      <% end %>
+      <% if @wine.aromas %>
+        <li class="list-group-item">Aromas: <% @wine.aromas.each do |aroma| %>
+                                            <ul><li><%= aroma.aroma_name %></li></ul>
+                                            <% end %>
+      <% end %>
+      <% if @wine.tasting_terms %>
+        <li class="list-group-item">Tasting Terms: <% @wine.tasting_terms.each do |term| %>
+                                                  <ul><li><%= term.term %></li></ul>
+                                                 <% end %>
+      <% end %>
+      <% if @wine.notes %>
+        <li class="list-group-item">Additional Notes: <%= @wine.notes %></li>
+      <% end %>
+    <div class="card-body">
+      <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a><br>
+      <a href="/wines/<%= @wine.id %>/edit/" class="card-link">Edit this wine</a>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Country: <%= @wine.country.country_name %></li>
-    <li class="list-group-item">Vintage: <%= @wine.vintage %></li>
-    <li class="list-group-item">Type: <%= @wine.wine_type %></li>
-    <li class="list-group-item">Price Range: <%= @wine.price_range %></li>
-    <li class="list-group-item">Varietal: <%= @wine.varietal.varietal_name %></li>
-    <li class="list-group-item">Favorite: <%= @wine.favorite %></li>
-
-  </ul>
-  <div class="card-body">
-    <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a><br>
-    <a href="/wines/<%= @wine.id %>/edit/" class="card-link">Edit this wine</a>
-  </div>
-</div>
-
-<div>
-  Aromas:
-  <ul>
-    <% @wine.aromas.each do |aroma| %>
-    <li><%= aroma.aroma_name %></li>
-    <% end %>
-  </ul>
-  Tasting Terms:
-  <ul>
-    <% @wine.tasting_terms.each do |term| %>
-    <li><%= term.term %></li>
-    <% end %>
-  </ul>
-  <ul>
-    <li><%= @wine.producer %></li>
-    <li><%= @wine.wine_name %></li>
-    <li><%= @wine.vintage %></li>
-    <li><%= @wine.varietal.varietal_name %></li>
-    <li><%= @wine.country.country_name %></li>
-    <li><%= @wine.wine_type %></li>
-    <li><%= @wine.rating %></li>
-    <li><%= @wine.price_range %></li>
-    <li>Organic? <%= @wine.organic %></li>
-    <li>Biodynamic? <%= @wine.biodynamic %></li>
-    <li>Organic? <%= @wine.favorite %></li>
-  </ul>
-
-  <p><%= @wine.notes %></p>
-
-</div>
