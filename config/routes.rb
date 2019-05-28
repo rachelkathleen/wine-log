@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/aromas' => 'learn#aromas'
   get '/glossary' => 'learn#glossary'
+  post '/glossary' => 'learn#glossary'
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'

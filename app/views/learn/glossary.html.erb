@@ -1,8 +1,8 @@
 <h4 align="center">Glossary of Wine Tasting Terms</h4>
 
-<%= form_tag(glossary_path) do %>
-  <%= text_field_tag :tasting_term %>
-  <%= submit_tag 'Search' %>
+<%= form_tag(glossary_path method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
 <% end %>
 
 <dl>
