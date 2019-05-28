@@ -6,9 +6,8 @@ class LearnController < ApplicationController
   end
 
   def glossary
-    if params[:term]
-      @terms = TastingTerm.where('term LIKE (?)', "%#{params[:term]}%")
-      binding.pry
+    if params[:search]
+      @terms = TastingTerm.glossary_search(params[:search])
     else
       @terms = TastingTerm.order(:term)
     end

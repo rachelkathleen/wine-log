@@ -4,4 +4,8 @@ class TastingTerm < ApplicationRecord
 
   validates :term, :definition, presence: true
   validates :term, uniqueness: true
+
+  def self.glossary_search(search)
+    self.where('term ILIKE :search or definition ILIKE :search', search: "%#{search}%")
+  end
 end
