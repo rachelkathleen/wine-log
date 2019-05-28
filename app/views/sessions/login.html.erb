@@ -1,24 +1,25 @@
 <%= flash[:error] %>
+<section class="main-content">
+  <div class="center" align="center">
+
+    <%= form_for @user, url: '/login' do |f| %>
+      <div class="form-group">
+        <%= f.label :user_name, "User Name:"%>
+        <%= f.text_field :user_name %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Log In" %>
 
 
-<div class="center" align="center">
-  <br><br><br>
-  <%= form_for @user, url: '/login' do |f| %>
-    <div class="form-group">
-      <%= f.label :user_name, "User Name:"%>
-      <%= f.text_field :user_name %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password, "Password:" %>
-      <%= f.password_field :password %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Log In" %>
+    Or
 
+    <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
+  </div>
+  <% end %>
+  </div>
 
-  Or
-
-  <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
-</div>
-<% end %>
-</div>
+</section>

@@ -18,8 +18,44 @@
 Dark purple #220F24
 Light purple #ECE8ED
 Light gray #F3F3F3 */
+
+* {
+    font-family: Yeseva-one;
+  }
+
+.table-responsive {
+  display: block;
+  /* padding: 20px; */
+  width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  text-align: center;
+}
+
+.table tr {
+  background-color: #47204B,
+  text-color: white;
+  font-family: Yeseva-One;
+}
+
+}
+.main-content {
+  display: block;
+  border-radius: 25px;
+  border: 3px solid #220F24;
+  padding: 20px;
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  text-align: center;
+}
 /* Margins and padding
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .mx-5 {
   margin-left: ($spacer * 3) !important;
 }
@@ -35,6 +71,8 @@ Light gray #F3F3F3 */
  .form-check {background-color: #ECE8ED;}
  .form-group {background-color: #ECE8ED;}
  .center {background-color: #ECE8ED;}
+ h4 {background-color: #ECE8ED;}
+
  /* Buttons
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
  .button.link_button,
