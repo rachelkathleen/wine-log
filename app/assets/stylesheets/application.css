@@ -18,7 +18,16 @@
 Dark purple #220F24
 Light purple #ECE8ED
 Light gray #F3F3F3 */
-
+/* Margins and padding
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mx-5 {
+  margin-left: ($spacer * 3) !important;
+}
+.p-4 {
+  padding: ($spacer * 1.5) !important;
+}
+/* Background color
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
  body {background-color: #ECE8ED;}
  div {background-color: #F3F3F3;}
  .form-row {background-color: #ECE8ED;}
