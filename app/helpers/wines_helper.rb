@@ -18,4 +18,12 @@ module WinesHelper
   def country_index
     Country.order(:country_name)
   end
+
+  def varietal_index
+    Varietal.order(:varietal_name)
+  end
+
+  def term_index
+    TastingTerm.order(:term)
+  end
 end
