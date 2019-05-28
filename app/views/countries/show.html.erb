@@ -1,9 +1,9 @@
 <h1>Wines & Varietals found in <%= @country.country_name  %></h1>
 
-<h3><%= link_to "Wines:", country_wines_path(@country) %></h3>
+<h3><%= link_to "Wines:", country_wines_path(@country), class: 'black-link'%></h3>
 <ul>
   <% @country.wines.each do |wine| %>
-    <li><%= link_to wine.wine_name, country_wine_path(wine) %></li>
+    <li><%= link_to wine.wine_name, country_wine_path(wine), class: 'black-link'%></li>
   <% end %>
 </ul>
 

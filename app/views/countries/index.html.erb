@@ -1,5 +1,13 @@
-<ul>
+
+<div class="container">
+  <h5 align="center">List of Wine Producing Countries</h5>
+  <br>
+  <dl>
   <% @countries.each do |country| %>
-    <li><%= link_to country.country_name, country_path(country) %></li>
-  <% end %>
-</ul>
+    <dt><%= link_to country.country_name, country_path(country), class:'black-link'%></dt>
+      <% country.wines.each do |wine| %>
+        <dd><%= link_to wine.producer, country_wine_path(wine.id), class:'black-link'%> - <%= wine.wine_name%></dd>
+        <% end %>
+      <% end %>
+    </dl>
+</div>
