@@ -17,8 +17,6 @@ class LearnController < ApplicationController
     end
   end
 
-  private
-  def tasting_term_params
-    params.require(:tasting_term).permit(:term, :definition)
+  def about
   end
 end
