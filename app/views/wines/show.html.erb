@@ -6,29 +6,31 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Country: <%= @wine.country.country_name %></li>
       <li class="list-group-item">Vintage: <%= @wine.vintage %></li>
-      <li class="list-group-item">Type: <%= @wine.wine_type %></li>
-      <% if @wine.price_range %>
+      <% if @wine.wine_type? %>
+        <li class="list-group-item">Type: <%= @wine.wine_type %></li>
+      <% end %>
+      <% if @wine.price_range? %>
         <li class="list-group-item">Price Range: <%= @wine.price_range %></li>
       <% end %>
       <li class="list-group-item">Varietal: <%= @wine.varietal.varietal_name %></li>
       <% if @wine.favorite %>
         <li class="list-group-item">Favorite: <%= @wine.favorite %></li>
       <% end %>
-      <% if @wine.aromas %>
+      <% if @wine.aromas.size != 0 %>
         <li class="list-group-item">Aromas: <% @wine.aromas.each do |aroma| %>
                                             <ul><li><%= aroma.aroma_name %></li></ul>
                                             <% end %>
       <% end %>
-      <% if @wine.tasting_terms %>
+      <% if @wine.tasting_terms.size != 0 %>
         <li class="list-group-item">Tasting Terms: <% @wine.tasting_terms.each do |term| %>
                                                   <ul><li><%= term.term %></li></ul>
                                                  <% end %>
       <% end %>
-      <% if @wine.notes %>
+      <% if @wine.notes? %>
         <li class="list-group-item">Additional Notes: <%= @wine.notes %></li>
       <% end %>
     <div class="card-body">
-      <a href="<%= wine_seacher_link %>" >Learn more, and find where to buy again</a><br>
-      <a href="/wines/<%= @wine.id %>/edit/" class="card-link">Edit this wine</a>
+      <button type="button" class="link_button"><%= link_to "Learn more, and find where to buy again", wine_seacher_link %></button>
+      <button type="button" class="link_button"><%= link_to "Edit this Wine", edit_wine_path(@wine) %></button>
     </div>
   </div>

@@ -66,6 +66,30 @@ Light gray #F3F3F3 */
   color: White;
   background-color: #220F24
 }
+.center {
+  display: block;
+  border: 3px solid #220F24;
+  padding: 20px;
+  width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.container {
+  display: block;
+  border: 3px solid #220F24;
+  padding: 20px;
+  width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  
+}
+
 
 
 h3  {background-color: #F3F3F3;}
@@ -81,6 +105,7 @@ h3  {background-color: #F3F3F3;}
  .form-group {background-color: #ECE8ED;}
  .center {background-color: #ECE8ED;}
  h4 {background-color: #ECE8ED;}
+ .card-body {background-color: white;}
 
  /* Buttons
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -103,7 +128,20 @@ h3  {background-color: #F3F3F3;}
    border: 1px solid #F3F3F3;
    cursor: pointer;
    box-sizing: border-box;
+   color: white;
+   link: white
   }
+
+  .black-link {
+    color: black; }
+  .black-link:hover {
+    color: #47204B; }
+  a {
+    color: #F3F3F3; }
+  a:hover {
+    color: white; }
+
+
 
 
 

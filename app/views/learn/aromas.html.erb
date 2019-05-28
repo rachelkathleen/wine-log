@@ -1,6 +1,14 @@
-<h1>List of Wine Aromas</h1>
-<ul>
-  <% Aroma.all.each do |aroma| %>
-  <li><%= aroma.aroma_name %></li>
+<div class="container">
+  <h5 align="center">List of Wine Aromas</h5>
+  <br>
+  <%= form_tag(aromas_path method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
   <% end %>
-</ul>
+  <br>
+  <dl>
+    <% @aromas.each do |a| %>
+    <dt><%= a.aroma_name %></dt>
+    <% end %>
+  </dl>
+</div>

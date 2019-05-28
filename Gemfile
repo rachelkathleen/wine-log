@@ -34,7 +34,9 @@ gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'dotenv-rails'
 gem 'thin'
-# gem "select2-rails"
+# gem 'select2-rails'
+
+
 # gem 'jquery-rails'
 
 

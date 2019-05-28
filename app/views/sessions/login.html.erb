@@ -1,6 +1,5 @@
 <%= flash[:error] %>
-<section class="main-content">
-  <div class="center" align="center">
+<div class="center" align="center">
 
     <%= form_for @user, url: '/login' do |f| %>
       <div class="form-group">
@@ -16,10 +15,6 @@
 
 
     Or
-
-    <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="false"></div>
-  </div>
+    <button type="button" class="link_button"><%= link_to "Log in with Facebook", '/auth/facebook' %></button>
   <% end %>
   </div>
-
-</section>

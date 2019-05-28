@@ -5,6 +5,8 @@ class WinesController < ApplicationController
   def index
     if params[:user_id]
       @wines = User.find(params[:user_id]).wines
+    elsif  params[:search]
+      @wines = Wines.wine_search.(params[:search])
     else
       @wines = Wine.all
     end

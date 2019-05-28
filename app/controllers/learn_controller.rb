@@ -2,7 +2,11 @@ class LearnController < ApplicationController
   skip_before_action :require_login
 
   def aromas
-    @aromas = Aroma.order(:aroma_name)
+    if params[:search]
+      @aromas = Aroma.aroma_search(params[:search])
+    else
+      @aromas = Aroma.order(:aroma_name)
+    end
   end
 
   def glossary

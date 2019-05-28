@@ -17,5 +17,9 @@ class Wine < ApplicationRecord
 
   scope :is_favorite, -> {where(favorite: true)}
 
+  def self.wine_search(search)
+    self.where('producer ILIKE :search or wine_name ILIKE :search or notes ILIKE :search or type ILIKE :search', search: "%#{search}%")
+  end
+
 
 end
