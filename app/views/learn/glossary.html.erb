@@ -1,6 +1,13 @@
-<h1>Glossary of Wine Tasting Terms</h1>
-<ul>
-  <% TastingTerm.all.each do |t| %>
-  <li><%= t.term %>: <%= t.definition %> </li>
-  <% end %>
-</ul>
+<h4 align="center">Glossary of Wine Tasting Terms</h4>
+
+<%= form_tag(glossary_path) do %>
+  <%= text_field_tag :tasting_term %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<dl>
+  <% @terms.each do |t| %>
+  <dt><%= t.term %></dt>
+  <dd><%= t.definition %></dd>
+    <% end %>
+</dl>

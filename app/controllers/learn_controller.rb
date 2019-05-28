@@ -5,5 +5,6 @@ class LearnController < ApplicationController
   end
 
   def glossary
+    @terms = TastingTerm.order(:term)
   end
 end
