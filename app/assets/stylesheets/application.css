@@ -34,11 +34,6 @@ Light gray #F3F3F3 */
   text-align: center;
 }
 
-.table tr {
-  background-color: #47204B,
-  text-color: white;
-  font-family: Yeseva-One;
-}
 
 }
 .main-content {
@@ -53,15 +48,8 @@ Light gray #F3F3F3 */
   margin-top: 10%;
   text-align: center;
 }
-/* Margins and padding
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.mx-5 {
-  margin-left: ($spacer * 3) !important;
-}
-.p-4 {
-  padding: ($spacer * 1.5) !important;
-}
+
 /* Background color
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
  body {background-color: #ECE8ED;}
@@ -85,21 +73,18 @@ Light gray #F3F3F3 */
    height: 38px;
    padding: 0 30px;
    text-align: center;
-   font-size: 11px;
    font-weight: 600;
    line-height: 38px;
-   letter-spacing: .1rem;
-   text-transform: uppercase;
    text-decoration: none;
    white-space: nowrap;
-   background-color: #F3F3F3;
+   background-color: #220F24;
    border-radius: 4px;
    border: 1px solid #F3F3F3;
    cursor: pointer;
    box-sizing: border-box;
-   color: #220F24;
-   font-family: "Yeseva One"
   }
+
+
 
   /* Tables
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
