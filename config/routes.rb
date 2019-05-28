@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :varietals
 
   resources :countries, only: [:index, :show] do
-    resources :wines, only: [:index, :new, :show]
+    resources :wines, only: [:index, :new, :show, :create]
   end
 
 
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post '/aromas' => 'learn#aromas'
   get '/glossary' => 'learn#glossary'
   post '/glossary' => 'learn#glossary'
+
+  get '/about' => 'learn#about'
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
