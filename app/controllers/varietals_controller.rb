@@ -7,13 +7,12 @@ class VarietalsController < ApplicationController
     @varietals = Varietal.all
   end
 
-  # def new
-  #   @varietal = Varietal.new
-  #   @varietal.wines.build
-  #   @varietal.wines.build
-  # end
+  def new
+    @varietal = Varietal.new
+  end
 
   def create
+    binding.pry
     @varietal = Varietal.create(varietal_params)
   end
 

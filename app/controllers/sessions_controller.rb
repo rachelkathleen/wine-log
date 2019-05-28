@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create, :welcome, :login, :fb_create]
-  
+
   def new
     @user = User.new
     render :login
@@ -18,15 +18,16 @@ class SessionsController < ApplicationController
   end
 
   def fb_create
-    binding.pry
+
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.user_name = auth['info']['name']
       u.email = auth['info']['email']
+      u.password = SecureRandom.hex
     end
-
+    binding.pry
     session[:user_id] = @user.id
 
-    render 'welcome'
+    redirect_to '/'
   end
 
   def welcome

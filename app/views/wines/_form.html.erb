@@ -72,7 +72,7 @@
   <% f.label :varietal_id %><br />
   <%= f.collection_select :varietal_id, Varietal.order(:varietal_name), :id, :varietal_name, {prompt: " "}, { multiple: false, class:"custom-select", size:"5"} %><br>
   <br><label>Add a new varietal</label>
-  <%= f.fields_for :varietal, Varietal.new do |varietal_attr|%>
+  <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
   <%= varietal_attr.label :name, "Varietal:" %>
   <%= varietal_attr.text_field :varietal_name %>
   <% end %>

@@ -5,9 +5,17 @@ module WinesHelper
 
   def show_image
     if @wine.picture.attached?
-      "image_tag(@wine.picture)"
+      image_tag(@wine.picture, class: "card-img-top", style: "width:128px;height:128px;", alt: "your_image")
     else
-      "https://www.bruniglass.com/assets/Uploads/products/14973.jpg"
+      image_tag("https://www.bruniglass.com/assets/Uploads/products/14973.jpg", class: "card-img-top", style: "width:128px;height:128px;", alt: "sample_image")
     end
+  end
+
+  def aroma_index
+    Aroma.order(:aroma_name)
+  end
+
+  def country_index
+    Country.order(:country_name)
   end
 end
