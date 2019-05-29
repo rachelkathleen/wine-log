@@ -30,7 +30,7 @@ ul.horizontal_menu li {
       padding: 20px;
       font-weight: bold;
   }
-  
+
 .footer {
   position: fixed;
   left: 0;
@@ -151,7 +151,7 @@ tr {padding: 20px;}
 }
 .columns {
   display: block;
-  border: 3px solid #220F24;
+  border: 3px solid #646970;
   /* padding: 20px; */
   width: 100%;
   height: auto;
