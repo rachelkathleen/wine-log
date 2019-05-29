@@ -16,6 +16,15 @@ class WinesController < ApplicationController
     @wine = Wine.new
   end
 
+  def new
+    if params[:country_id] && country = Country.find_by_id(params[:country_id])
+      @wine = country.wines.build
+    else
+      @wine = Wine.new
+      @wine.build_country
+    end
+  end
+
   def show
     @wine = Wine.find(params[:id])
     # if @wine.country != @country
@@ -25,7 +34,9 @@ class WinesController < ApplicationController
   end
 
   def create
-    @wine = Wine.new(wine_params)
+    @wine = current_user.wines.build(wine_params)
+    # @wine = Wine.new(wine_params)
+    # need to re-add to wine form <%= f.hidden_field :user_id, :value => current_user.id %>
     binding.pry
     if @wine.save
       redirect_to @wine

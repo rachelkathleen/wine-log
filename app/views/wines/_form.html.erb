@@ -2,7 +2,7 @@
   <br>
   <%= form_for @wine do |f|%>
   <%= render partial: 'layouts/errors', locals: {object: @wine} %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :country_id%>
 
   <div class="form-row align-items-center">
     <div class="col-auto">
