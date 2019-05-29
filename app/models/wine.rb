@@ -25,28 +25,31 @@ class Wine < ApplicationRecord
   scope :sparkling, -> {where(wine_type: "Sparkling")}
   scope :other, -> {where(wine_type: "other")}
 
+  PRICE_RANGES = ["Less than $10", "$10 - $15", "$15 - $20",
+  "$20 - $30", "$30 - $40", "$40 - $50", "$50 - $60", "$60 - $70",
+  "$70 - $80", "$80 - $90", "$90 - $100", "Over $100",]
+
+  WINE_TYPES = ["Red", "White", "Rose", "Sparkling", "Sweet", "Other"]
+  
   def self.average_rating
     average(:rating)
   end
 
   def self.top_rated
-    #want to return the wine type (white, red) with the highest average rating
-    averages = {"Red" => Wine.red.average_rating.to_f,
-                "White" => Wine.white.average_rating.to_f,
-                "Rose"=> Wine.rose.average_rating.to_f,
-                "Sparkling"=> Wine.sparkling.average_rating.to_f,
-                "sweet"=> Wine.sweet.average_rating.to_f}
+    averages = {}
+    types = Wine.pluck(:wine_type).uniq
+    types.each do |type|
+      averages[type] = Wine.where(wine_type: type).average_rating.to_f
+    end
     top_type = averages.sort_by { |wine_type, avg| avg }.last[0]
-    # top_type[0]
   end
 
   def self.most_bottles
-    #want to return the wine type (white, red) with the highest count
-    count = {"Red"=> Wine.red.count,
-             "White"=> Wine.count,
-             "Rose"=> Wine.rose.count,
-             "Sparkling"=> Wine.sparkling.count,
-              "Sweet"=>Wine.sweet.count}
+    count = {}
+    types = Wine.pluck(:wine_type).uniq
+    types.each do |type|
+      count[type] = Wine.where(wine_type: type).count
+    end
     count.sort_by { |wine_type, count| count }.last[0]
   end
 
