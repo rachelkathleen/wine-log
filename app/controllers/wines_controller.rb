@@ -19,9 +19,10 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
-    # if params[:user_id]
-    #   @user.id = @wine.user_id
-    # end
+    # if @wine.country != @country
+    if params[:country_id].to_i != @wine.country_id
+      redirect_to countries_path
+    end
   end
 
   def create

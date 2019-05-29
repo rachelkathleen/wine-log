@@ -6,7 +6,7 @@
   <% @countries.each do |country| %>
     <dt><%= link_to country.country_name, country_path(country), class:'black-link'%></dt>
       <% country.wines.each do |wine| %>
-        <dd><%= link_to wine.producer, country_wine_path(wine.id), class:'black-link'%> - <%= wine.wine_name%></dd>
+        <dd><%= link_to wine.producer, country_wine_path(country, wine), class:'black-link'%> - <%= wine.wine_name%></dd>
         <% end %>
       <% end %>
     </dl>

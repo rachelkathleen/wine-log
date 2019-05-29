@@ -1,16 +1,16 @@
 
 <div class="container">
-<h5 align="center">Glossary of Wine Tasting Terms</h5>
-<br>
-<%= form_tag(glossary_path method: :get) do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
-<br>
-<dl>
-  <% @terms.each do |t| %>
-  <dt><%= t.term %></dt>
-  <dd><%= t.definition %></dd>
-    <% end %>
-</dl>
+  <h5 align="center">Glossary of Wine Tasting Terms</h5>
+  <br>
+  <%= form_tag(glossary_path method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
+  <br>
+  <dl>
+    <% @terms.each do |t| %>
+    <dt><%= t.term %></dt>
+    <dd><%= t.definition %></dd>
+      <% end %>
+  </dl>
 </div>
