@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def insights
+    @user = current_user
+  end
+
 
   private
 

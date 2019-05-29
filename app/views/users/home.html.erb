@@ -1,3 +1,4 @@
+<div class="container">
 <div class="top-container">
   <h5 align="center"><b><%= @user.user_name %>'s Wines</b></h5>
 </div>
@@ -6,4 +7,6 @@
 
 <%= render partial: 'users/table', locals: {object: @user.wines.is_favorite} %>
 
-<button type="button" class="link_button"><%= link_to "Add a new Wine", new_wine_path %></button>
+
+
+</div>

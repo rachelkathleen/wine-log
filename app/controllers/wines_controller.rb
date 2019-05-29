@@ -50,18 +50,18 @@ class WinesController < ApplicationController
   end
 
   def update
-    unless @wine.user_id = current_user.id
+    @wine = Wine.find(params[:id])
+    if @wine.user_id != current_user.id
       flash[:error] = "Sorry, you can only edit wines in your cellar."
       redirect_to wine_path(@wine)
     end
-
-    @wine = Wine.find(params[:id])
     if @wine.update(wine_params)
       redirect_to wine_path(@wine)
     else
       render :edit
     end
   end
+
 
   def destroy
     @wine = Wine.find(params[:id])

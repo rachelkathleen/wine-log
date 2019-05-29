@@ -23,6 +23,14 @@ Light gray #F3F3F3 */
     font-family: "Yeseva One";
   }
 
+ul.horizontal_menu li {
+      display: inline;
+      /* list-style-type: none; */
+      margin: 5px;
+      padding: 20px;
+      font-weight: bold;
+  }
+  
 .footer {
   position: fixed;
   left: 0;
@@ -31,8 +39,8 @@ Light gray #F3F3F3 */
   background-color: #220F24;
   color: white;
   text-align: center;
+  justify-content: space-around;
 }
-
 
 .table-responsive {
   display: block;
@@ -103,11 +111,49 @@ tr {padding: 20px;}
   background-color: #F3F3F3
 }
 
+.inside {
+  display: block;
+  /* border: 3px solid #220F24; */
+  /* padding: 20px; */
+
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  background-color: #F3F3F3
+}
+
+.btn-group {
+  display: block;
+  padding: 20px;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  background-color: #F3F3F3
+}
+
 .container {
   display: block;
   border: 3px solid #220F24;
   padding: 20px;
   width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.columns {
+  display: block;
+  border: 3px solid #220F24;
+  /* padding: 20px; */
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;

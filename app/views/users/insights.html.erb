@@ -1,0 +1,51 @@
+<div class="container">
+<div class="top-container">
+  <h5 align="center"><b>Insights for <%= @user.user_name %></b></h5>
+</div>
+
+<p>You have <%= @user.wines.count %> bottles of wine in your collection and
+<%= @user.wines.is_favorite.count %> favorites.</p>
+<p>The average rating for all wines is <%= @user.wines.average_rating %>.</p>
+
+<p>Most of the wine in your collection is <%= @user.wines.most_bottles.downcase %> and
+<%= @user.wines.top_rated.downcase %> wines are your highest rated on average.</p>
+
+<div class="columns">
+  <div class="row">
+    <div class="col">
+      <div class="inside">
+        <dl>
+          <dt>Top Aromas:</dt>
+          <% @user.wines.top_aromas.each do |aroma| %>
+          <dd><%= aroma %></dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+    <div class="col">
+      <div class="inside">
+        <dl>
+          <dt>Top Tasting Terms:</dt>
+          <% @user.wines.top_terms.each do |term| %>
+          <dd><%= term %></dd>
+          <% end %>
+          </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+Total: <%= @user.wines.count %> Total favorite: <%= @user.wines.is_favorite.count %>
+<br>Red: <%= @user.wines.red.count %> Average rating: <%= @user.wines.red.average_rating %>
+<br>White: <%= @user.wines.white.count %> Average rating: <%= @user.wines.white.average_rating %>
+<br>Rose: <%= @user.wines.rose.count %> Average rating:
+<br>Sparkling: <%= @user.wines.sparkling.count %> Average rating:
+<br>Sweet: <%= @user.wines.sweet.count %> Average rating:
+
+
+
+</div>

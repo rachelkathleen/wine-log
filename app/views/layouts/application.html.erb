@@ -65,10 +65,18 @@
 
     <%= yield %>
 
-
+    <% if logged_in? %>
   <div class="footer">
-<p></p>
+    <ul class="horizontal_menu">
+    <li><%= link_to "Add a Wine", new_wine_path %></li><li><%= link_to "Countries", countries_path %></li>
+    <li><%= link_to "Glossary", glossary_path %></li>
+    <li><%= link_to "Aromas", aromas_path %></li>
+    <li><%= link_to "Insights", insights_path %></li>
+    <li><%= link_to "Your Cellar", home_path %></li>
+    <li><%= link_to "Logout", logout_path %></li>
+    </ul>
   </div>
+  <% end %>
 
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=327625804519036&autoLogAppEvents=1"></script>

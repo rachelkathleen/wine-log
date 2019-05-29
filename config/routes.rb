@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/aromas' => 'learn#aromas'
   get '/glossary' => 'learn#glossary'
   post '/glossary' => 'learn#glossary'
+  get '/insights' => 'users#insights'
 
   get '/about' => 'learn#about'
 
