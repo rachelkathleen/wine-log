@@ -2,25 +2,24 @@ class WinesController < ApplicationController
   before_action :require_login
 
 
-  def index
-    if params[:user_id]
-      @wines = User.find(params[:user_id]).wines
-    elsif  params[:search]
-      @wines = Wines.wine_search.(params[:search])
-    else
-      @wines = Wine.all
-    end
-  end
+  # def index
+  #   if params[:user_id]
+  #     @wines = User.find(params[:user_id]).wines
+  #   elsif  params[:search]
+  #     @wines = Wines.wine_search.(params[:search])
+  #   else
+  #     @wines = Wine.all
+  #   end
+  # end
 
   def new
     @wine = Wine.new
-
   end
 
   def show
     @wine = Wine.find(params[:id])
     # if @wine.country != @country
-    if params[:country_id].to_i != @wine.country_id
+    if params[:country_id] && params[:country_id].to_i != @wine.country_id
       redirect_to countries_path
     end
   end
@@ -40,6 +39,11 @@ class WinesController < ApplicationController
   end
 
   def update
+    unless @wine.user_id = current_user.id
+      flash[:error] = "Sorry, you can only edit wines in your cellar."
+      redirect_to wine_path(@wine)
+    end
+
     @wine = Wine.find(params[:id])
     if @wine.update(wine_params)
       redirect_to wine_path(@wine)
