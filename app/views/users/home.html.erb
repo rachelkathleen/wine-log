@@ -1,6 +1,6 @@
-<section class="main-content">
-  <%= @user.user_name %>'s Wines
-</section>
+<div class="top-container">
+  <h5 align="center"><b><%= @user.user_name %>'s Wines</b></h5>
+</div>
 
 <%= render partial: 'users/table', locals: {object: @user.wines} %>
 
