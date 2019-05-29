@@ -23,6 +23,16 @@ Light gray #F3F3F3 */
     font-family: Yeseva-one;
   }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #220F24;
+  color: white;
+  text-align: center;
+}
+
 
 .table-responsive {
   display: block;
@@ -31,7 +41,8 @@ Light gray #F3F3F3 */
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   text-align: center;
   border: 25px;
   border: 3px solid #220F24
@@ -46,8 +57,12 @@ Light gray #F3F3F3 */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
+  margin-bottom: 5%;
   border: 25px;
   border: 3px solid #220F24;
+  background-color: #F3F3F3;
+  width: 60%;
+  alignment: center
 }
 
 .main-content {
@@ -60,6 +75,7 @@ Light gray #F3F3F3 */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
+  margin-bottom: 5%;
   text-align: center;
   font-size: 30px;
   font-weight: bold;
@@ -75,7 +91,9 @@ Light gray #F3F3F3 */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
+  margin-bottom: 5%;
   text-align: center;
+  background-color: #F3F3F3
 }
 
 .container {
@@ -87,10 +105,8 @@ Light gray #F3F3F3 */
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
-
+  margin-bottom: 5%;
 }
-
-
 
 h3  {background-color: #F3F3F3;}
 
@@ -99,13 +115,14 @@ h3  {background-color: #F3F3F3;}
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
  body {background-color: #ECE8ED;}
  div {background-color: #F3F3F3;}
+ .list-group-item {background-color: #F3F3F3;}
  /* .form-row {background-color: #ECE8ED;}
  .col-auto {background-color: #ECE8ED;}
  .form-check {background-color: #ECE8ED;}
  .form-group {background-color: #ECE8ED;} */
- .center {background-color: #ECE8ED;}
  h4 {background-color: #ECE8ED;}
- .card-body {background-color: white;}
+ h3  {background-color: #F3F3F3;}
+
 
  /* Buttons
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -123,7 +140,7 @@ h3  {background-color: #F3F3F3;}
    line-height: 38px;
    text-decoration: none;
    white-space: nowrap;
-   background-color: #220F24;
+   background-color: #47204B;
    border-radius: 4px;
    border: 1px solid #F3F3F3;
    cursor: pointer;
@@ -133,16 +150,13 @@ h3  {background-color: #F3F3F3;}
   }
 
   .black-link {
-    color: black; }
+    color: #220F24; }
   .black-link:hover {
     color: #47204B; }
   a {
     color: #F3F3F3; }
   a:hover {
     color: white; }
-
-
-
 
 
   /* Tables
