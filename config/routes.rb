@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get '/home' => 'users#home'
   get '/auth/facebook/callback' => 'sessions#fb_create'
 
+  get '*path' => redirect('/')
+
 end
