@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :wines
+  resources :wines, only: [:new, :create, :edit, :update, :show]
   resources :users, only: [:new, :create, :edit, :update]
-  resources :varietals
 
-  resources :countries, only: [:index, :show] do
-    resources :wines, only: [:index, :new, :show, :create]
+  resources :countries, only: [:index] do
+    resources :wines, only: [:new, :show, :create]
   end
-
 
   root 'sessions#welcome'
   get '/goodbye' => 'sessions#goodbye'
 
-  # root 'learn#aromas'
-  # root 'learn#glossary'
 
   get '/aromas' => 'learn#aromas'
   post '/aromas' => 'learn#aromas'
@@ -29,7 +25,5 @@ Rails.application.routes.draw do
 
   get '/home' => 'users#home'
   get '/auth/facebook/callback' => 'sessions#fb_create'
-
-
 
 end
