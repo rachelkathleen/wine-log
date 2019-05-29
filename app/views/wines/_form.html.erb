@@ -1,4 +1,5 @@
 <div class="container">
+  <br>
   <%= form_for @wine do |f|%>
   <%= render partial: 'layouts/errors', locals: {object: @wine} %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -54,7 +55,7 @@
       <%= f.label :aroma_ids, "Wine Aromas" %><br>
       <%= f.collection_select :aroma_ids, aroma_index, :id, :aroma_name,  {prompt: " "}, { multiple: true, class:"custom-select", size:"5"}%><br>
       <small id="HelpBlock" class="form-text text-muted">
-    <%= link_to "Aromas", aromas_path %> refer to what you can smell in a wine - you can choose one or many.</small>
+    <%= link_to "Aromas", aromas_path, class:'black-link' %> refer to what you can smell in a wine - you can choose one or many.</small>
     <small id="HelpBlock" class="form-text text-muted">   <br></small>
     </div>
     <div class="col-auto">
@@ -62,7 +63,7 @@
       <%= f.collection_select :tasting_term_ids, term_index, :id, :term,  {prompt: " "}, { multiple: true, class:"custom-select", size:"5"} %><br>
 
       <small id="HelpBlock" class="form-text text-muted">Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth.</small>
-      <small id="HelpBlock" class="form-text text-muted">Look at the <%= link_to "glossary", glossary_path %> to learn what they mean.</small>
+      <small id="HelpBlock" class="form-text text-muted">Look at the <%= link_to "glossary", glossary_path, class:'black-link' %> to learn what they mean.</small>
     </div>
   </div>
   <br>

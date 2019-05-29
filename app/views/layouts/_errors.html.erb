@@ -1,5 +1,9 @@
-<ul>
-    <% object.errors.full_messages.each do |error_message| %>
-        <li><%= error_message%></li>
-    <% end %>
-</ul>
+
+<% object.errors.full_messages.each do |error_message| %>
+    <div class="alert alert-danger" role="alert">
+
+          <%= error_message%>
+
+
+  </div>
+      <% end %>

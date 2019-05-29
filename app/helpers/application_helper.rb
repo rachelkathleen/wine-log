@@ -12,5 +12,5 @@ module ApplicationHelper
       flash[:error] = "You must be logged in to access this section"
       redirect_to login_path # halts request cycle
     end
-  end
+  end  
 end

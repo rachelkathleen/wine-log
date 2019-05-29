@@ -1,36 +1,39 @@
-  <div class="card" style="width: 80%;" alignment="center">
+
+  <%= flash[:error] %>
+
+
+  <div class="card">
       <%= show_image %>
     <div class="card-body">
       <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Country: <%= @wine.country.country_name %></li>
-      <li class="list-group-item">Vintage: <%= @wine.vintage %></li>
+      <li class="list-group-item"><b>Country:</b> <%= @wine.country.country_name %></li>
+      <li class="list-group-item"><b>Vintage:</b> <%= @wine.vintage %></li>
       <% if @wine.wine_type? %>
-        <li class="list-group-item">Type: <%= @wine.wine_type %></li>
+        <li class="list-group-item"><b>Type:</b> <%= @wine.wine_type %></li>
       <% end %>
       <% if @wine.price_range? %>
-        <li class="list-group-item">Price Range: <%= @wine.price_range %></li>
+        <li class="list-group-item"><b>Price Range:</b> <%= @wine.price_range %></li>
       <% end %>
-      <li class="list-group-item">Varietal: <%= @wine.varietal.varietal_name %></li>
-      <% if @wine.favorite %>
-        <li class="list-group-item">Favorite: <%= @wine.favorite %></li>
-      <% end %>
+      <li class="list-group-item"><b>Varietal:</b> <%= @wine.varietal.varietal_name %></li>
       <% if @wine.aromas.size != 0 %>
-        <li class="list-group-item">Aromas: <% @wine.aromas.each do |aroma| %>
+        <li class="list-group-item"><b>Aromas:</b> <% @wine.aromas.each do |aroma| %>
                                             <ul><li><%= aroma.aroma_name %></li></ul>
                                             <% end %>
       <% end %>
       <% if @wine.tasting_terms.size != 0 %>
-        <li class="list-group-item">Tasting Terms: <% @wine.tasting_terms.each do |term| %>
+        <li class="list-group-item"><b>Tasting Terms:</b> <% @wine.tasting_terms.each do |term| %>
                                                   <ul><li><%= term.term %></li></ul>
                                                  <% end %>
       <% end %>
       <% if @wine.notes? %>
-        <li class="list-group-item">Additional Notes: <%= @wine.notes %></li>
+        <li class="list-group-item"><b>Tasting Terms:</b> <%= @wine.notes %></li>
       <% end %>
     <div class="card-body">
-      <button type="button" class="link_button"><%= link_to "Learn more, and find where to buy again", wine_seacher_link %></button>
-      <button type="button" class="link_button"><%= link_to "Edit this Wine", edit_wine_path(@wine) %></button>
+      <button type="button" class="link_button"><%= link_to "More about this Wine", wine_seacher_link %></button>
+      <% if @wine.user_id == current_user.id %>
+        <button type="button" class="link_button"><%= link_to "Edit this Wine", edit_wine_path(@wine) %></button>
+      <% end %>
     </div>
   </div>

@@ -22,11 +22,8 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <% if logged_in? %>
-            <a class="nav-link" href="/home">Home</a>
+            <a class="nav-link" href="/home">Your homepage</a>
             <% end %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/aromas">List of Wine Aromas</a>
@@ -34,7 +31,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/glossary">Glossary of Tasting terms</a>
           </li>
-
+          <li class="nav-item">
+            <% if logged_in? %>
+            <a class="nav-link" href="/countries">List of Wine Producing Countries</a>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
           <% unless logged_in? %>
           <li class="nav-item">
             <a class="nav-link" href="/signup">Signup</a>
@@ -60,6 +64,11 @@
   <body>
 
     <%= yield %>
+
+
+  <div class="footer">
+<p></p>
+  </div>
 
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=327625804519036&autoLogAppEvents=1"></script>
