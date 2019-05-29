@@ -2,50 +2,8 @@
   <%= @user.user_name %>'s Wines
 </section>
 
-<div class="table-responsive">
-  <h3>Your Cellar </h3>
-  <table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Producer</th>
-      <th scope="col">Name</th>
-      <th scope="col">Vintage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.wines.each do |wine| %>
-    <tr>
-      <td><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
-      <td><%= wine.wine_name %></td>
-      <td><%= wine.vintage %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: 'users/table', locals: {object: @user.wines} %>
 
-</div>
+<%= render partial: 'users/table', locals: {object: @user.wines.is_favorite} %>
 
-
-<div class="table-responsive">
-  <h3>Your Favorite Wines</h3>
-  <table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Producer</th>
-      <th scope="col">Name</th>
-      <th scope="col">Vintage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.wines.is_favorite.each do |wine| %>
-    <tr>
-      <td><%= link_to wine.producer, wine_path(wine), class:'black-link' %></td>
-      <td><%= wine.wine_name %></td>
-      <td><%= wine.vintage %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-
-  <button type="button" class="link_button"><%= link_to "Add a new Wine", new_wine_path %></button>
+<button type="button" class="link_button"><%= link_to "Add a new Wine", new_wine_path %></button>

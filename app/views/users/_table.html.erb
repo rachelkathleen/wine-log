@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <h3>Your Cellar </h3>
+  <table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Producer</th>
+      <th scope="col">Name</th>
+      <th scope="col">Vintage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% object.each do |wine| %>
+    <tr>
+      <td><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
+      <td><%= wine.wine_name %></td>
+      <td><%= wine.vintage %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
