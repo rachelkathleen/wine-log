@@ -30,15 +30,29 @@ class Wine < ApplicationRecord
   "$70 - $80", "$80 - $90", "$90 - $100", "Over $100",]
 
   WINE_TYPES = ["Red", "White", "Rose", "Sparkling", "Sweet", "Other"]
-  
+
   def self.average_rating
     average(:rating)
   end
 
+  def self.countries
+    country_ids = Wine.pluck(:country_id)
+    countries = Country.where('id IN (?)', country_ids).pluck(:country_name)
+  end
+
+  def self.top_country
+    #not working
+    country_ids = Wine.pluck(:country_id)
+    countries = country_ids.map do |id|
+      Country.find_by_id(id)
+    end
+    countries.group(:id).order('COUNT(id) desc').limit(1).pluck(:country_name)
+  end
+
   def self.top_rated
     averages = {}
-    types = Wine.pluck(:wine_type).uniq
-    types.each do |type|
+    # types = Wine.pluck(:wine_type).uniq
+    WINE_TYPES.each do |type|
       averages[type] = Wine.where(wine_type: type).average_rating.to_f
     end
     top_type = averages.sort_by { |wine_type, avg| avg }.last[0]
@@ -46,8 +60,8 @@ class Wine < ApplicationRecord
 
   def self.most_bottles
     count = {}
-    types = Wine.pluck(:wine_type).uniq
-    types.each do |type|
+    # types = Wine.pluck(:wine_type).uniq
+    WINE_TYPES.each do |type|
       count[type] = Wine.where(wine_type: type).count
     end
     count.sort_by { |wine_type, count| count }.last[0]
