@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       u.email = auth['info']['email']
       u.password = SecureRandom.hex
     end
-    binding.pry
+    
     session[:user_id] = @user.id
 
     redirect_to '/'

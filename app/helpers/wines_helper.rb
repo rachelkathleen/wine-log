@@ -5,7 +5,7 @@ module WinesHelper
 
   def show_image
     if @wine.picture.attached?
-      binding.pry
+
       image_tag(@wine.picture, class: "picture", style: "width:128px; height:128px;", alt: "your_image")
     end
   end

@@ -90,7 +90,7 @@ class Wine < ApplicationRecord
 
   def  country_attributes=(country_attributes)
     if country_attributes[:country_name].present?
-      binding.pry
+
        country = Country.find_or_create_by(country_attributes)
        self.country = country
     end

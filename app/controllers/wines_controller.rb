@@ -32,7 +32,7 @@ class WinesController < ApplicationController
     @wine = current_user.wines.build(wine_params)
     # @wine = Wine.new(wine_params)
     # need to re-add to wine form <%= f.hidden_field :user_id, :value => current_user.id %>
-    binding.pry
+
     if @wine.save
       redirect_to @wine
     else

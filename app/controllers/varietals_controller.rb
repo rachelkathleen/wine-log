@@ -12,7 +12,7 @@ class VarietalsController < ApplicationController
   end
 
   def create
-    binding.pry
+    
     @varietal = Varietal.create(varietal_params)
   end
 
