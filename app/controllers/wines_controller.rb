@@ -1,7 +1,6 @@
 class WinesController < ApplicationController
   before_action :require_login
 
-
   # def index
   #   if params[:user_id]
   #     @wines = User.find(params[:user_id]).wines
@@ -11,10 +10,6 @@ class WinesController < ApplicationController
   #     @wines = Wine.all
   #   end
   # end
-
-  def new
-    @wine = Wine.new
-  end
 
   def new
     if params[:country_id] && country = Country.find_by_id(params[:country_id])

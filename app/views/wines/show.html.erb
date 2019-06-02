@@ -3,7 +3,10 @@
 
 
   <div class="card">
+    <div class="picture">
       <%= show_image %>
+      <%= image_tag @wine.picture %>
+    </div>
     <div class="card-body">
       <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
     </div>
