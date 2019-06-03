@@ -1,0 +1,11 @@
+<div class="container">
+<div class="top-container">
+  <h5 align="center"><b>All Wines</b></h5>
+</div>
+
+<%= render partial: 'users/table', locals: {object: @user.wines} %>
+<div class="top-container">
+  <h5 align="center"><b>Favorite Wines</b></h5>
+</div>
+<%= render partial: 'users/table', locals: {object: @user.wines.is_favorite} %>
+</div>
