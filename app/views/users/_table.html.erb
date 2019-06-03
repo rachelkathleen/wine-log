@@ -2,7 +2,7 @@
   <table class="u-full-width">
   <thead class="table-head">
     <tr>
-      <th scope="col">Producer</th>
+      <th scope="col" style="padding-left: 40px">Producer</th>
       <th scope="col">Name</th>
       <th scope="col">Vintage</th>
     </tr>
@@ -10,7 +10,7 @@
   <tbody>
     <% object.each do |wine| %>
     <tr>
-      <td><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
+      <td style="padding-left: 40px"><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
       <td><%= wine.wine_name %></td>
       <td><%= wine.vintage %></td>
     </tr>
