@@ -17,7 +17,7 @@
   <br>
   <div class="form-row align-items-center ">
     <div class="col-auto">
-      <%= f.fields_for :varietal, Varietal.new do |varietal_attr|%>
+      <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= varietal_attr.text_field :varietal_name, {list: "varietal_names"} %>
       <datalist id="varietal_names">
@@ -28,7 +28,7 @@
     <% end %>
     </div>
     <div class="col-auto">
-      <%= f.fields_for :country, Country.new do |country_attr|%>
+      <%= f.fields_for :country, @wine.build_country do |country_attr|%>
       <%= country_attr.label :name, "Country:" %>
       <%= country_attr.text_field :country_name, {list: "country_names"} %>
       <datalist id="country_names">
