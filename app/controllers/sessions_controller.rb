@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(user_name: params[:user][:user_name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to new_wine_path
     else
       flash[:error] = "Sorry, your username or password was incorrect"
       redirect_to '/login'
@@ -24,10 +24,10 @@ class SessionsController < ApplicationController
       u.email = auth['info']['email']
       u.password = SecureRandom.hex
     end
-    
+
     session[:user_id] = @user.id
 
-    redirect_to '/'
+    redirect_to new_wine_path
   end
 
   def welcome
