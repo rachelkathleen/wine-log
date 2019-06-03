@@ -144,6 +144,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
+    mini_magick (4.9.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -306,6 +307,7 @@ DEPENDENCIES
   google-cloud-storage (~> 1.8)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   nokogiri
   omniauth
   omniauth-facebook

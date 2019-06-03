@@ -34,6 +34,7 @@ gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'dotenv-rails'
 gem 'thin'
+gem 'mini_magick'
 # gem 'select2-rails'
 
 
