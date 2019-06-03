@@ -1,26 +1,4 @@
-require 'nokogiri'
-require 'open-uri'
-SITE = "https://www.jancisrobinson.com/learn/grape-varieties/"
-
-red_page = Nokogiri::HTML(open(SITE+"red"))
-white_page = Nokogiri::HTML(open(SITE+"white"))
-
-grapes = []
-
-red_nodeset = red_page.css(".info-table li a")
-red_nodeset.each do |node|
-  grapes << node.attr("href").split("/").last.gsub("-", " ").capitalize
-end
-
-white_nodeset = white_page.css(".info-table li a")
-white_nodeset.each do |node|
-  grapes << node.attr("href").split("/").last.gsub("-", " ").capitalize
-end
-
-grapes.uniq.each do |grape|
-  Varietal.create(varietal_name: grape)
-end
-
+scrape_grapes
 
 Aroma.create(aroma_name: "Burning rubber")
 Aroma.create(aroma_name: "Burnt toast")
@@ -78,7 +56,6 @@ Aroma.create(aroma_name: "Bacon fat")
 Aroma.create(aroma_name: "Leather")
 Aroma.create(aroma_name: "Game")
 Aroma.create(aroma_name: "Meaty")
-
 
 Country.create(country_name: "Italy")
 Country.create(country_name: "France")
