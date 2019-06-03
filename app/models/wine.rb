@@ -41,12 +41,9 @@ class Wine < ApplicationRecord
   end
 
   def self.top_country
-    #not working
-    country_ids = Wine.pluck(:country_id)
-    countries = country_ids.map do |id|
-      Country.find_by_id(id)
-    end
-    countries.group(:id).order('COUNT(id) desc').limit(1).pluck(:country_name)
+    country_ids = Wine.select(:country_id)
+    country_id = country_ids.group(:id).order('COUNT(id) desc').limit(1)
+    top_country = Country.find_by(id: country_id).country_name
   end
 
   def self.top_rated
