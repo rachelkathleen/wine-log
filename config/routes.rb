@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post '/glossary' => 'learn#glossary'
   get '/insights' => 'users#insights'
 
-  get '/about' => 'learn#about'
+  # get '/about' => 'learn#about'
 
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
