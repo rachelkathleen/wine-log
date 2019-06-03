@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(user_name: params[:user][:user_name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to new_wine_path
+      redirect_to home_path
     else
       flash[:error] = "Sorry, your username or password was incorrect"
       redirect_to '/login'
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
     session[:user_id] = @user.id
 
-    redirect_to new_wine_path
+    redirect_to home_path
   end
 
   def welcome
