@@ -37,6 +37,8 @@ gem 'dotenv-rails'
 gem 'thin'
 # gem 'mini_magick'
 # gem 'select2-rails'
+gem 'rails_12factor'
+gem 'foreman'
 
 
 # gem 'jquery-rails'
