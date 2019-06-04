@@ -70,7 +70,7 @@
     <li><%= link_to "Add a Wine", new_wine_path %></li><li><%= link_to "Countries", countries_path %></li>
     <li><%= link_to "Insights", insights_path %></li>
     <li><%= link_to "Your Cellar", home_path %></li>
-    <li><%= link_to "Logout", logout_path %></li>
+    <li><%= link_to "Logout", logout_path, method: :delete%></li>
       <% end %>
     <li><%= link_to "Glossary", glossary_path %></li>
     <li><%= link_to "Aromas", aromas_path %></li>

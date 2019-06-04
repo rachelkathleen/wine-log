@@ -1,16 +1,6 @@
 class WinesController < ApplicationController
   before_action :require_login
 
-  # def index
-  #   if params[:user_id]
-  #     @wines = User.find(params[:user_id]).wines
-  #   elsif  params[:search]
-  #     @wines = Wines.wine_search.(params[:search])
-  #   else
-  #     @wines = Wine.all
-  #   end
-  # end
-
   def new
     if params[:country_id] && country = Country.find_by_id(params[:country_id])
       @wine = country.wines.build
@@ -22,7 +12,6 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
-    # if @wine.country != @country
     if params[:country_id] && params[:country_id].to_i != @wine.country_id
       redirect_to countries_path
     end
@@ -30,9 +19,6 @@ class WinesController < ApplicationController
 
   def create
     @wine = current_user.wines.build(wine_params)
-    # @wine = Wine.new(wine_params)
-    # need to re-add to wine form <%= f.hidden_field :user_id, :value => current_user.id %>
-
     if @wine.save
       redirect_to @wine
     else

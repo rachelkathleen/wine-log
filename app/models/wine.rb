@@ -32,39 +32,44 @@ class Wine < ApplicationRecord
   WINE_TYPES = ["Red", "White", "Rose", "Sparkling", "Sweet", "Other"]
 
   ### SCOPE METHODS FOR QUERYING WINES ###
+  # average rating for all wines
   def self.average_rating
     average(:rating)
   end
 
+  # returns array of countries currently associated with wine objects
   def self.countries
     country_ids = Wine.pluck(:country_id)
     countries = Country.where('id IN (?)', country_ids).pluck(:country_name)
   end
 
+  # returns most frequently appearing country
   def self.top_country
     country_ids = Wine.select(:country_id)
     country_id = country_ids.group(:id).order('COUNT(id) desc').limit(1)
     top_country = Country.find_by(id: country_id).country_name
   end
 
+  # returns wine type with highest average rating
   def self.top_rated
     averages = {}
-    # types = Wine.pluck(:wine_type).uniq
     WINE_TYPES.each do |type|
       averages[type] = Wine.where(wine_type: type).average_rating.to_f
     end
     top_type = averages.sort_by { |wine_type, avg| avg }.last[0]
   end
 
+  # returns most common wine type
   def self.most_bottles
     count = {}
-    # types = Wine.pluck(:wine_type).uniq
     WINE_TYPES.each do |type|
       count[type] = Wine.where(wine_type: type).count
     end
     count.sort_by { |wine_type, count| count }.last[0]
   end
 
+  # returns top three aromas for wines that are highly rated or favorite,
+  # based on count
   def self.top_aroma
     wine_ids = Wine.is_favorite.pluck(:id) & Wine.highly_rated.pluck(:id)
     aroma_ids = WineAroma.where('wine_id IN (?)', wine_ids).pluck(:aroma_id)
@@ -72,7 +77,8 @@ class Wine < ApplicationRecord
     aromas.group(:id).order('COUNT(id) desc').limit(3).pluck(:aroma_name)
   end
 
-  # querying the top terms
+  # returns top three terms for wines that are highly rated or favorite,
+  # based on count
   def self.top_terms
     wine_ids = Wine.is_favorite.pluck(:id) & Wine.highly_rated.pluck(:id)
     tasting_term_ids = WineTastingTerm.where('wine_id IN (?)', wine_ids).pluck(:tasting_term_id)
@@ -82,6 +88,7 @@ class Wine < ApplicationRecord
 
   ### END OF SCOPE METHODS FOR QUERYING WINES ###
 
+  # custom setter to allow users to create new varietals in nested form
   def  varietal_attributes=(varietal_attributes)
     if varietal_attributes[:varietal_name].present?
        varietal = Varietal.find_or_create_by(varietal_attributes)
@@ -89,6 +96,7 @@ class Wine < ApplicationRecord
     end
   end
 
+  # custom setter to allow users to create new countries in nested form
   def  country_attributes=(country_attributes)
     if country_attributes[:country_name].present?
 

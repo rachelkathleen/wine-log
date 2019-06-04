@@ -244,6 +244,11 @@ h3  {background-color: #F3F3F3;}
   a:hover {
     color: white; }
 
+  .flash_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+  }
+
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

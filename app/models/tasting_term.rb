@@ -5,6 +5,7 @@ class TastingTerm < ApplicationRecord
   validates :term, :definition, presence: true
   validates :term, uniqueness: true
 
+  #search fuction for index page
   def self.glossary_search(search)
     self.where('term ILIKE :search or definition ILIKE :search', search: "%#{search}%")
   end
