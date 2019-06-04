@@ -9,7 +9,7 @@
 google:
   service: GCS
   project: wine-log
-  credentials: "GOOGLE_KEY"
+  credentials: 'GOOGLE_APPLICATION_CREDENTIALS'
   bucket: wine-log
 google_dev:
   service: GCS
