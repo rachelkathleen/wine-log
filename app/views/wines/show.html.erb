@@ -2,9 +2,11 @@
   <%= flash[:error] %>
 
   <div class="card">
+    <div class="picture">
       <%= show_image %>
+    </div>
     <div class="card-body">
-      <h5 class="card-title"><%= @wine.producer %> - <%= @wine.wine_name %></h5>
+      <h5 class="card-title"><b><%= @wine.producer %> - <%= @wine.wine_name %></b></h5>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><b>Country:</b> <%= @wine.country.country_name %></li>
@@ -27,9 +29,9 @@
                                                  <% end %>
       <% end %>
       <% if @wine.notes? %>
-        <li class="list-group-item"><b>Tasting Terms:</b> <%= @wine.notes %></li>
+        <li class="list-group-item"><b>Tasting Notes:</b> <%= @wine.notes %></li>
       <% end %>
-    <div class="card-body">
+    <div class="card-body" align="center">
       <button type="button" class="link_button"><%= link_to "More about this Wine", wine_seacher_link, target:'_blank' %></button>
       <% if @wine.user_id == current_user.id %>
         <button type="button" class="link_button"><%= link_to "Edit this Wine", edit_wine_path(@wine) %></button>
