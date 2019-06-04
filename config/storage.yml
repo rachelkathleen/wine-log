@@ -9,7 +9,7 @@
 google:
   service: GCS
   project: wine-log
-  credentials: <%= Rails.root.join("config/secrets/wine-log-pic.json") %>
+  credentials: "GOOGLE_KEY"
   bucket: wine-log
 google_dev:
   service: GCS
