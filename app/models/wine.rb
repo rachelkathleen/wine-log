@@ -31,6 +31,7 @@ class Wine < ApplicationRecord
 
   WINE_TYPES = ["Red", "White", "Rose", "Sparkling", "Sweet", "Other"]
 
+  ### SCOPE METHODS FOR QUERYING WINES ###
   def self.average_rating
     average(:rating)
   end
@@ -64,19 +65,22 @@ class Wine < ApplicationRecord
     count.sort_by { |wine_type, count| count }.last[0]
   end
 
-  def self.top_aromas
+  def self.top_aroma
     wine_ids = Wine.is_favorite.pluck(:id) & Wine.highly_rated.pluck(:id)
     aroma_ids = WineAroma.where('wine_id IN (?)', wine_ids).pluck(:aroma_id)
     aromas = Aroma.where('id in (?)', aroma_ids)
     aromas.group(:id).order('COUNT(id) desc').limit(3).pluck(:aroma_name)
   end
 
+  # querying the top terms
   def self.top_terms
     wine_ids = Wine.is_favorite.pluck(:id) & Wine.highly_rated.pluck(:id)
     tasting_term_ids = WineTastingTerm.where('wine_id IN (?)', wine_ids).pluck(:tasting_term_id)
     terms = TastingTerm.where('id in (?)', tasting_term_ids)
     terms.group(:id).order('COUNT(id) desc').limit(3).pluck(:term)
   end
+
+  ### END OF SCOPE METHODS FOR QUERYING WINES ###
 
   def  varietal_attributes=(varietal_attributes)
     if varietal_attributes[:varietal_name].present?
@@ -93,8 +97,8 @@ class Wine < ApplicationRecord
     end
   end
 
-  def self.wine_search(search)
-    self.where('producer ILIKE :search or wine_name ILIKE :search or notes ILIKE :search or type ILIKE :search', search: "%#{search}%")
-  end
+  # def self.wine_search(search)
+  #   self.where('producer ILIKE :search or wine_name ILIKE :search or notes ILIKE :search or type ILIKE :search', search: "%#{search}%")
+  # end
 
 end

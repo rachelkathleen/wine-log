@@ -5,8 +5,7 @@ module WinesHelper
 
   def show_image
     if @wine.picture.attached?
-
-      image_tag(@wine.picture, alt: "your_image")
+      image_tag(@wine.picture.service_url, alt: "your_image", height: "250", style: "border: 1px solid #220F24")
     end
   end
 
