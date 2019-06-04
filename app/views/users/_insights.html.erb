@@ -5,6 +5,8 @@
 
   <p>Most of the wine in your collection is <%= @user.wines.most_bottles.downcase %> and
   <%= @user.wines.top_rated.downcase %> wines are your highest rated on average.</p>
+  <p>You've added wines from <%= @user.wines.countries.size %> countries, more coming from <%= @user.wines.top_country %> than anywhere else, and
+  wines from <%= @user.wines.top_rated_country %> are the highest rated on average.</p>
   <p>The lists below are the top three most frequently selected aromas and tasting terms for wines that you rated highly, or marked as a favorite.</p>
   <p>When you see wines reviewed or described with these terms, know that you're more likely to enjoy them!</p>
 </div>

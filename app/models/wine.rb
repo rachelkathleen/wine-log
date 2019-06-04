@@ -41,6 +41,7 @@ class Wine < ApplicationRecord
   def self.countries
     country_ids = Wine.pluck(:country_id)
     countries = Country.where('id IN (?)', country_ids).pluck(:country_name)
+    countries.uniq
   end
 
   # returns most frequently appearing country
@@ -48,6 +49,15 @@ class Wine < ApplicationRecord
     country_ids = Wine.select(:country_id)
     country_id = country_ids.group(:id).order('COUNT(id) desc').limit(1)
     top_country = Country.find_by(id: country_id).country_name
+  end
+
+  # returns country with highest average rated wines
+  def self.top_rated_country
+    averages = {}
+    Wine.countries.each do |country|
+      averages[country] = Wine.where(country: country).average_rating.to_f
+    end
+    top_rated_country = averages.sort_by { |country, avg| avg }.last[0]
   end
 
   # returns wine type with highest average rating
@@ -70,7 +80,7 @@ class Wine < ApplicationRecord
 
   # returns top three aromas for wines that are highly rated or favorite,
   # based on count
-  def self.top_aroma
+  def self.top_aromas
     wine_ids = Wine.is_favorite.pluck(:id) & Wine.highly_rated.pluck(:id)
     aroma_ids = WineAroma.where('wine_id IN (?)', wine_ids).pluck(:aroma_id)
     aromas = Aroma.where('id in (?)', aroma_ids)
