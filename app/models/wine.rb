@@ -14,6 +14,7 @@ class Wine < ApplicationRecord
 
   validates :vintage, :user_id, :producer, :wine_name, presence: true
   validates :rating, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
+  validates :picture, content_type: ["image/png", "image/jpeg", "image/jpg"]
 
   scope :is_favorite, -> {where(favorite: true)}
   scope :order_by_rating, -> {order(:rating)}

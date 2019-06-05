@@ -1,5 +1,5 @@
 module WinesHelper
-  
+
   #method to dynamic link on wine-searcher.com with wine name and producer
   def wine_seacher_link
     @link = "https://www.wine-searcher.com/find/#{@wine.producer}+#{@wine.wine_name}"
