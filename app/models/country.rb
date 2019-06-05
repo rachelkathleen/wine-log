@@ -7,4 +7,8 @@ class Country < ApplicationRecord
 
   validates :country_name, presence: true
   validates :country_name, uniqueness: true
+
+  def self.country_search(search)
+    self.where('country_name ILIKE ?', "%#{search}%")
+  end
 end

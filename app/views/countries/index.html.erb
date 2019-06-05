@@ -2,6 +2,9 @@
 <div class="container">
   <h5 align="center">List of Wine Producing Countries</h5>
   <br>
+  <%= form_tag(countries_path, method: :get) do %>
+    <%= render '/learn/search' %>
+  <% end %>
   <dl>
   <% @countries.each do |country| %>
     <dt><%= link_to country.country_name, new_country_wine_path(country.id), class:'black-link'%></dt>
