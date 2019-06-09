@@ -19,12 +19,12 @@ class Wine < ApplicationRecord
   scope :is_favorite, -> {where(favorite: true)}
   scope :order_by_rating, -> {order(:rating)}
   scope :highly_rated, -> {where("rating > ?", 7)}
-  scope :red, -> {where(wine_type: "Red")}
-  scope :white, -> {where(wine_type: "White")}
-  scope :rose, -> {where(wine_type: "Rose")}
-  scope :sweet, -> {where(wine_type: "Sweet")}
-  scope :sparkling, -> {where(wine_type: "Sparkling")}
-  scope :other, -> {where(wine_type: "other")}
+  # scope :red, -> {where(wine_type: "Red")}
+  # scope :white, -> {where(wine_type: "White")}
+  # scope :rose, -> {where(wine_type: "Rose")}
+  # scope :sweet, -> {where(wine_type: "Sweet")}
+  # scope :sparkling, -> {where(wine_type: "Sparkling")}
+  # scope :other, -> {where(wine_type: "other")}
 
   PRICE_RANGES = ["Less than $10", "$10 - $15", "$15 - $20",
   "$20 - $30", "$30 - $40", "$40 - $50", "$50 - $60", "$60 - $70",
