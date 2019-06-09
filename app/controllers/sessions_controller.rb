@@ -29,6 +29,14 @@ class SessionsController < ApplicationController
     redirect_to home_path
   end
 
+  def googleAuth
+    binding.pry
+    @user = User.from_omniauth(auth)
+    @user.save
+    session[:user_id] = @user.id
+    redirect_to home_path
+  end
+
   def welcome
   end
 

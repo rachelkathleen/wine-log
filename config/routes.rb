@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   get '/home' => 'users#home'
+
+  #routes for omniauth
   get '/auth/facebook/callback' => 'sessions#fb_create'
+  get '/auth/google_oauth2/callback' => 'sessions#googleAuth'
+
 
   get '*path' => redirect('/')
 
