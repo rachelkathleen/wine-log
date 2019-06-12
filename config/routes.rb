@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   get '/home' => 'users#home'
 
   #routes for omniauth
-  get '/auth/facebook/callback' => 'sessions#fb_create'
-  get '/auth/google_oauth2/callback' => 'sessions#googleAuth'
+  get '/auth/facebook/callback' => 'sessions#omniauth'
+  get '/auth/:provider/callback' => 'sessions#omniauth'
 
 
   get '*path' => redirect('/')

@@ -18,19 +18,21 @@ class SessionsController < ApplicationController
   end
 
   def fb_create
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.user_name = auth['info']['name']
-      u.email = auth['info']['email']
-      u.password = SecureRandom.hex
-    end
-
+    @user = User.from_omniauth(auth)
+    @user.save
     session[:user_id] = @user.id
-
     redirect_to home_path
   end
 
+
   def googleAuth
-    binding.pry
+    @user = User.from_omniauth(auth)
+    @user.save
+    session[:user_id] = @user.id
+    redirect_to home_path
+  end
+
+  def omniauth
     @user = User.from_omniauth(auth)
     @user.save
     session[:user_id] = @user.id
