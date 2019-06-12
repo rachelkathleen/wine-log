@@ -2,6 +2,7 @@ class WinesController < ApplicationController
   before_action :require_login
 
   def new
+    #new for regular and nested route
     if params[:country_id] && country = Country.find_by_id(params[:country_id])
       @wine = country.wines.build
     else

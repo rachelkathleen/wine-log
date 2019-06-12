@@ -12,7 +12,6 @@ class VarietalsController < ApplicationController
   end
 
   def create
-    
     @varietal = Varietal.create(varietal_params)
   end
 

@@ -7,6 +7,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # normal create action
+    binding.pry
     @user = User.find_or_create_by(user_name: params[:user][:user_name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
@@ -17,22 +19,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def fb_create
-    @user = User.from_omniauth(auth)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to home_path
-  end
-
-
-  def googleAuth
-    @user = User.from_omniauth(auth)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to home_path
-  end
-
   def omniauth
+    # facebook and google create action
     @user = User.from_omniauth(auth)
     @user.save
     session[:user_id] = @user.id
@@ -53,6 +41,4 @@ class SessionsController < ApplicationController
   def auth
     request.env['omniauth.auth']
   end
-
-
 end

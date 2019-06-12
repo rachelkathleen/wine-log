@@ -2,19 +2,13 @@ class LearnController < ApplicationController
   skip_before_action :require_login
 
   def aromas
-    if params[:search]
-      @aromas = Aroma.aroma_search(params[:search])
-    else
-      @aromas = Aroma.order(:aroma_name)
-    end
+    #index of aromas with or without search params
+    @aromas = params[:search] ? Aroma.aroma_search(params[:search]) : Aroma.order(:aroma_name)
   end
 
   def glossary
-    if params[:search]
-      @terms = TastingTerm.glossary_search(params[:search])
-    else
-      @terms = TastingTerm.order(:term)
-    end
+    #index of tasting terms with or without search params
+    @terms = params[:search] ? TastingTerm.glossary_search(params[:search]) : TastingTerm.order(:term)
   end
 
   def about

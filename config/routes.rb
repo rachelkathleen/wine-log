@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   get '/goodbye' => 'sessions#goodbye'
 
   get '/aromas' => 'learn#aromas'
+  post '/aromas' => 'learn#aromas'
 
   get '/glossary' => 'learn#glossary'
+  post '/glossary' => 'learn#glossary'
 
   get '/insights' => 'users#insights'
 
