@@ -7,14 +7,10 @@ class UsersController < ApplicationController
 
   def create
     # normal create action
-    @user = User.find_or_create_by(user_name: params[:user][:user_name])
-    if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = @user.id
-      redirect_to home_path
-    else
-      flash[:error] = "Sorry, your username or password was incorrect"
-      redirect_to '/login'
-    end
+    @user = User.create(user_params)
+    return redirect_to controller: 'users', action: 'new' unless @user.save
+    session[:user_id] = @user.id
+    redirect_to home_path
   end
 
   def home

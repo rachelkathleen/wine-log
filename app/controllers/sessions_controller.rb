@@ -5,10 +5,9 @@ class SessionsController < ApplicationController
     @user = User.new
     render :login
   end
-
+  
   def create
     # normal create action
-    binding.pry
     @user = User.find_or_create_by(user_name: params[:user][:user_name])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
