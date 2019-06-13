@@ -19,18 +19,21 @@ class Wine < ApplicationRecord
   scope :is_favorite, -> {where(favorite: true)}
   scope :order_by_rating, -> {order(:rating)}
   scope :highly_rated, -> {where("rating > ?", 7)}
-  # scope :red, -> {where(wine_type: "Red")}
-  # scope :white, -> {where(wine_type: "White")}
-  # scope :rose, -> {where(wine_type: "Rose")}
-  # scope :sweet, -> {where(wine_type: "Sweet")}
-  # scope :sparkling, -> {where(wine_type: "Sparkling")}
-  # scope :other, -> {where(wine_type: "other")}
 
   PRICE_RANGES = ["Less than $10", "$10 - $15", "$15 - $20",
   "$20 - $30", "$30 - $40", "$40 - $50", "$50 - $60", "$60 - $70",
   "$70 - $80", "$80 - $90", "$90 - $100", "Over $100",]
 
   WINE_TYPES = ["Red", "White", "Rose", "Sparkling", "Sweet", "Other"]
+
+  ### METAPRAGRAMMING SCOPE METHODS FOR WINE TYPES
+  self.singleton_class.class_eval do
+    WINE_TYPES.each do |wine_type|
+      define_method(color.downcase.to_sym) do
+        where(wine_type: wine_type)
+      end
+    end
+  end
 
   ### SCOPE METHODS FOR QUERYING WINES ###
   # average rating for all wines
