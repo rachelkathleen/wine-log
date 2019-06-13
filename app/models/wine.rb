@@ -29,7 +29,7 @@ class Wine < ApplicationRecord
   ### METAPRAGRAMMING SCOPE METHODS FOR WINE TYPES
   self.singleton_class.class_eval do
     WINE_TYPES.each do |wine_type|
-      define_method(color.downcase.to_sym) do
+      define_method(wine_type.downcase.to_sym) do
         where(wine_type: wine_type)
       end
     end
