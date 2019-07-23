@@ -16,11 +16,10 @@
       //prevent form from submitting the default way
       event.preventDefault();
 
-      var values = $(this).serialize();
+        var values = $(this).serialize();
+        var posting = $.post('/products', values);
+        posting.done(function(data) {
 
-      var newWine = $.post('/wines', values);
-
-      newWine.done(function(data) {
         var wine = data;
         $("#producer").text(wine["producer"]);
         $("#wineName").text(wine"wine_name"]);
