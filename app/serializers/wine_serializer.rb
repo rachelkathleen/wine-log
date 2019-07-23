@@ -4,6 +4,6 @@ class WineSerializer < ActiveModel::Serializer
   belongs_to :user
   belongs_to :varietal
   belongs_to :country
-  has_many :wine_aromas, serializer: WineAromaSerializer
-  has_many :wine_tasting_terms, serializer: WineTastingTermSerializer
+  has_many :wine_aromas, serializer: AromaSerializer
+  has_many :wine_tasting_terms, serializer: TastingTermSerializer
 end

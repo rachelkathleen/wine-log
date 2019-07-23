@@ -1,5 +1,30 @@
 
 <div class="top-container">
+  <div id="success">
+    <h2 id="producer"></h2>
+    <p id="wineName"></p>
+  </div>
+
   <h5 align="center"><b>Add a new Wine</b></h5>
 </div>
 <%= render 'form' %>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      var newWine = $.post('/wines', values);
+
+      newWine.done(function(data) {
+        var wine = data;
+        $("#producer").text(wine["producer"]);
+        $("#wineName").text(wine"wine_name"]);
+      });
+    });
+  });
+</script>
