@@ -41,6 +41,8 @@ gem 'omniauth-google-oauth2'
 gem 'rails_12factor'
 gem 'foreman'
 
+gem 'active_model_serializers'
+
 
 # gem 'jquery-rails'
 
