@@ -11,10 +11,18 @@ class WinesController < ApplicationController
     end
   end
 
+  # def show
+  #   @wine = Wine.find(params[:id])
+  #   if params[:country_id] && params[:country_id].to_i != @wine.country_id
+  #     redirect_to countries_path
+  #   end
+  # end
+
   def show
     @wine = Wine.find(params[:id])
-    if params[:country_id] && params[:country_id].to_i != @wine.country_id
-      redirect_to countries_path
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @wine, status: 200 }
     end
   end
 
