@@ -31,7 +31,7 @@ class WinesController < ApplicationController
     if @wine.save
       render json: @wine, status: 201
     else
-      render :new
+      render json: {errors: @wine.errors.full_messages}
     end
   end
 

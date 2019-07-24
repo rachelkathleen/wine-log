@@ -3,7 +3,7 @@
 </div>
 <%= render 'form' %>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function () {
     $('form').submit(function(event) {
       //prevent form from submitting the default way
@@ -20,4 +20,41 @@
       });
     });
   });
+</script> -->
+<script>
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      // Get the messages div.
+
+      const formMessages = $('#form-messages');
+      $(formMessages).removeClass('alert-success')
+      $(formMessages).removeClass('alert-danger')
+      $(formMessages).html("<ul></ul>")
+
+
+      const values = $(this).serialize();
+      const posting = $.post('/wines', values);
+      posting.done(function(data) {
+      const wine = data;
+      if (!data.errors) {
+        $(formMessages).addClass('alert-success');
+        $(formMessages).show();
+        document.querySelector('#form-messages').innerHTML+=`<p>Wine has been added to your cellar - click <a href="/wines/${wine.id}">here</a> to view </p>`
+        $("#producer").text(wine["producer"]);
+        $("#wineName").text(wine["wine_name"]);
+        $('form')[0].reset();
+      } else {
+        $(formMessages).addClass('alert-danger');
+        $(formMessages).show();
+
+        data.errors.forEach(function(error){
+          document.querySelector('#form-messages ul').innerHTML+=`<li>${error}</li>`
+        })
+      }
+      });
+    });
+  })
+// want to update errors/remove success message when resubmitted
 </script>
