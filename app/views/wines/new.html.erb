@@ -1,13 +1,3 @@
-
-<div id="success">
-  <h2 id="producer"></h2>
-  <p id="wineName"></p>
-  <% if @wine.id %>
-    <%= link_to "success", wine_path(@wine), class:'black-link'%>
-  <% end %>
-</div>
-
-
 <div class="top-container">
   <h5 align="center"><b>Add a new Wine</b></h5>
 </div>
@@ -22,13 +12,12 @@
         var values = $(this).serialize();
         var posting = $.post('/wines', values);
         posting.done(function(data) {
-
         var wine = data;
+        $("#success").show();
         $("#producer").text(wine["producer"]);
         $("#wineName").text(wine["wine_name"]);
         $('form')[0].reset();
       });
     });
   });
-
 </script>

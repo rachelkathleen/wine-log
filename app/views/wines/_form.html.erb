@@ -1,4 +1,10 @@
 <div class="container">
+
+  <div id="success" class="alert alert-success" style="display:none">
+    <p>Wine has been added to your cellar! View here.</p>
+    <h2 id="producer"></h2>
+    <p id="wineName"></p>
+  </div>
   <br>
   <%= form_for @wine do |f|%>
   <%= render partial: 'layouts/errors', locals: {object: @wine} %>
