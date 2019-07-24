@@ -44,7 +44,7 @@ gem 'foreman'
 gem 'active_model_serializers'
 
 
-# gem 'jquery-rails'
+gem 'jquery-rails'
 
 
 # Use ActiveStorage variant
