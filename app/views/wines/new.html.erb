@@ -41,7 +41,7 @@
       if (!data.errors) {
         $(formMessages).addClass('alert-success');
         $(formMessages).show();
-        document.querySelector('#form-messages').innerHTML+=`<p>Wine has been added to your cellar - click <a href="/wines/${wine.id}">here</a> to view </p>`
+        document.querySelector('#form-messages').innerHTML+=`<p>${wine.producer} - ${wine.wine_name} has been added to your cellar - click <a class="alert-link" href="/wines/${wine.id}">here</a> to view. </p>`
         $("#producer").text(wine["producer"]);
         $("#wineName").text(wine["wine_name"]);
         $('form')[0].reset();
@@ -50,7 +50,7 @@
         $(formMessages).show();
 
         data.errors.forEach(function(error){
-          document.querySelector('#form-messages ul').innerHTML+=`<li>${error}</li>`
+          document.querySelector('#form-messages').innerHTML+=`<p>${error}</p>`
         })
       }
       });
