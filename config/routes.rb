@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :wines, only: [:new, :create, :edit, :update, :show]
+  resources :wines, only: [:new, :create, :edit, :update, :show, :index]
   resources :users, only: [:new, :create, :edit, :update]
 
   resources :countries, only: [:index] do
-    resources :wines, only: [:new, :show, :create]
+    resources :wines, only: [:new, :show, :create, :index]
   end
 
 

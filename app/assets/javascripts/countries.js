@@ -13,7 +13,7 @@ class Country {
 
 Country.prototype.formatHTML = function() {
   // return `<dt><a href="countries/${this.id}">${this.country_name}</a></dt>`
-  return `<dt><a class="black-link"href="countries/${this.id}">${this.country_name}</a></dt>`
+  return `<dt><a class="black-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
 }
 
 function listeningPageLoad() {
