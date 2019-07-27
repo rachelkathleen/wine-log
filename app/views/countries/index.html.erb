@@ -1,16 +1,11 @@
 
-<div class="container">
+<div class="container" id="country-index">
   <h5 align="center">List of Wine Producing Countries</h5>
   <br>
   <%= form_tag(countries_path, method: :get) do %>
     <%= render '/learn/search' %>
   <% end %>
-  <dl>
-  <% @countries.each do |country| %>
-    <dt><%= link_to country.country_name, new_country_wine_path(country.id), class:'black-link'%></dt>
-      <% country.wines.each do |wine| %>
-        <dd><%= link_to wine.producer, country_wine_path(country, wine), class:'black-link'%> - <%= wine.wine_name%></dd>
-        <% end %>
-      <% end %>
+  <dl id="list">
+    something
     </dl>
 </div>

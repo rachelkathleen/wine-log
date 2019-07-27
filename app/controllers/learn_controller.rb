@@ -4,6 +4,7 @@ class LearnController < ApplicationController
   def aromas
     #index of aromas with or without search params
     @aromas = params[:search] ? Aroma.aroma_search(params[:search]) : Aroma.order(:aroma_name)
+    # render :json => @aromas
   end
 
   def glossary
