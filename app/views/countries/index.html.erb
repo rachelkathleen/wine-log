@@ -5,7 +5,20 @@
   <%= form_tag(countries_path, method: :get) do %>
     <%= render '/learn/search' %>
   <% end %>
-  <dl id="list">
-    something
+  <div class="row">
+  <div class="col-6">
+    <dl id="list">
+
     </dl>
+  </div>
+  <div class="col-6">
+    <div id="wines">
+      <ul>
+        <li>a list of things</li>
+        <li>to test html columns</li>
+      </ul>
+      <!-- should display wines when a country is clicked -->
+    </div>
+  </div>
+  </div>
 </div>
