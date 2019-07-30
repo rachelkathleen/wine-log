@@ -20,6 +20,7 @@ function listeningPageLoad() {
   $.get('/countries' + '.json', function(jsonData) {
     jsonData.forEach(function(data) {
       const countryData = new Country(data)
+      debugger
       const formatHTML = countryData.formatHTML()
       const listDiv = document.getElementById('list')
       listDiv.innerHTML += formatHTML
