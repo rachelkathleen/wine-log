@@ -5,9 +5,11 @@
     <%= render 'search' %>
   <% end %>
   <br>
-  <dl>
+
+  <input type="text" id="myInput" onkeyup="searchAromaFunction()" placeholder="Search">
+  <dl id="aroma-list">
     <% @aromas.each do |a| %>
-    <dt><%= a.aroma_name %></dt>
+    <dt class='aromas'><%= a.aroma_name %></dt>
     <% end %>
   </dl>
 </div>

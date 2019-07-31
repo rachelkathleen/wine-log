@@ -46,7 +46,7 @@ function listeningPageLoad() {
     });
   }
   // search bar
-    function searchFunction() { 
+    function searchFunction() {
       // Declare variables
       var input, filter, dl, dt, a, i, txtValue;
       input = document.getElementById('myInput');
