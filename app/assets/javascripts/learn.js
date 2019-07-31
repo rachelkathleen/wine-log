@@ -2,20 +2,20 @@
   function searchGlossaryFunction() {
     console.log("Hello world")
     // Declare variables
-    var input, filter, dl, dt, item, i, txtValue;
+    var input, filter, dl, div, item, i, txtValue;
     input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
     dl = document.getElementById("term-list");
-    dt = dl.getElementsByTagName('dt');
+    div = dl.getElementsByClassName('term');
 
-    for (i = 0; i < dt.length; i++) {
-      item = dt[i]
+    for (i = 0; i < div.length; i++) {
+      item = div[i]
 
       txtValue = item.textContent || item.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        dt[i].style.display = "";
+        div[i].style.display = "";
       } else {
-        dt[i].style.display = "none";
+        div[i].style.display = "none";
       }
     }
   }

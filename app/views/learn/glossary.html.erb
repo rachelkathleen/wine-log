@@ -6,8 +6,11 @@
   <br>
   <dl id="term-list">
     <% @terms.each do |t| %>
-    <dt><%= t.term %></dt>
-    <dd><%= t.definition %></dd>
+    <div class="term">
+      <dt><%= t.term %></dt>
+      <dd><%= t.definition %></dd>
+    </div>
+
       <% end %>
   </dl>
 </div>
