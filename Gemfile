@@ -48,6 +48,7 @@ gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
+  gem 'rails-assets-chosen-bootstrap'
 end
 
 

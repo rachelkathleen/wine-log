@@ -78,7 +78,7 @@
   <div class="form-row align-items-center">
     <div class="col-auto">
       <%= f.label :aroma_ids, "Wine Aromas:" %><br>
-      <%= select_tag "aromas",
+      <%= select_tag :aroma_ids,
         options_for_select(aroma_index.map {|aroma| [aroma.aroma_name, aroma.id]}), class: 'chosen-select', multiple: true %>
       <%= f.collection_select :aroma_ids, aroma_index, :id, :aroma_name,  {prompt: " "}, { multiple: true, class:"custom-select", size:"10"}%><br>
 
