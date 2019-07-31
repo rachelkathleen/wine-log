@@ -10,11 +10,12 @@ class Country {
     this.id = json.id
   }
 }
-
+// HTML for the countries list
 Country.prototype.formatHTML = function() {
   return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
 }
-
+// fetches the countries json data, sets variables for each country object, the formatted html
+// from the prototype method, then sets the inner html of specified div to the formatted html
 function listeningPageLoad() {
   $.get('/countries' + '.json', function(jsonData) {
     jsonData.forEach(function(data) {
@@ -23,7 +24,8 @@ function listeningPageLoad() {
       const listDiv = document.getElementById('list')
       listDiv.innerHTML += formatHTML
     });
-
+// creates event listener for click on a country, prevents the default action, then fetches
+// the json data for each object and displays it in the specified div
     $(".country-link").on("click", function(event) {
       event.preventDefault();
       const id = $(this).data("id");
@@ -31,14 +33,14 @@ function listeningPageLoad() {
         .then(function(response) {
           return response.json();
         }).then(function(country) {
-                              $("#wines").html(`
-                                  <p>number of wines: ${country.wines.length}</p>
-                                  <p>the wines are:
+                              $("#wines").html(`<div class="container">
+                                  <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
+                                  <dd>
                                   ${country.wines.map(function(wine) {
-                                      return `<p>${wine.wine_name}</p>`;
+                                      return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
                                     })
                                     .join("")}
-                                    `)
+                                    </div>`)
 
     })
   })
