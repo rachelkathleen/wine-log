@@ -45,3 +45,23 @@ function listeningPageLoad() {
   })
     });
   }
+  // search bar
+    function searchFunction() { 
+      // Declare variables
+      var input, filter, dl, dt, a, i, txtValue;
+      input = document.getElementById('myInput');
+      filter = input.value.toUpperCase();
+      dl = document.getElementById("list");
+      dt = dl.getElementsByTagName('dt');
+
+      // Loop through all list items, and hide those who don't match the search query
+      for (i = 0; i < dt.length; i++) {
+        a = dt[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          dt[i].style.display = "";
+        } else {
+          dt[i].style.display = "none";
+        }
+      }
+    }

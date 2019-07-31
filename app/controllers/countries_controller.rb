@@ -9,5 +9,6 @@ class CountriesController < ApplicationController
       format.html { render :index }
       format.json { render json: @countries, status: 200 }
     end
+
   end
 end
