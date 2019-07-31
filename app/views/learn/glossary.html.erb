@@ -2,11 +2,9 @@
 <div class="container">
   <h5 align="center">Glossary of Wine Tasting Terms</h5>
   <br>
-  <%= form_tag(glossary_path method: :get) do %>
-    <%= render 'search' %>
-  <% end %>
+  <input type="text" id="myInput" onkeyup="searchGlossaryFunction()" placeholder="Search">
   <br>
-  <dl>
+  <dl id="term-list">
     <% @terms.each do |t| %>
     <dt><%= t.term %></dt>
     <dd><%= t.definition %></dd>

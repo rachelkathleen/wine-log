@@ -1,11 +1,11 @@
 
-  function searchAromaFunction() {
+  function searchGlossaryFunction() {
     console.log("Hello world")
     // Declare variables
     var input, filter, dl, dt, item, i, txtValue;
     input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
-    dl = document.getElementById("aroma-list");
+    dl = document.getElementById("term-list");
     dt = dl.getElementsByTagName('dt');
 
     for (i = 0; i < dt.length; i++) {
