@@ -13,4 +13,9 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require chosen
 //= require_tree .
+
+$(document).ready(function() {
+  $(".chosen-select").chosen();
+});

@@ -1,5 +1,7 @@
 {
   "name": "wine_journal",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "chosen-js": "^1.8.7"
+  }
 }
