@@ -12,7 +12,7 @@ class Country {
 }
 
 Country.prototype.formatHTML = function() {
-  return `<dt><a class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
+  return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
 }
 
 function listeningPageLoad() {
@@ -27,15 +27,14 @@ function listeningPageLoad() {
     $(".country-link").on("click", function(event) {
       event.preventDefault();
       const id = $(this).data("id");
-
-      fetch(`/countries/${id}/wines`)
+      fetch(`/countries/${id}/wines.json`)
         .then(function(response) {
           return response.json();
-        }).then(function(wines) {
+        }).then(function(country) {
                               $("#wines").html(`
-                                  <p>number of wines: ${wines.length}</p>
+                                  <p>number of wines: ${country.wines.length}</p>
                                   <p>the wines are:
-                                  ${wines.map(function(wine) {
+                                  ${country.wines.map(function(wine) {
                                       return `<p>${wine.wine_name}</p>`;
                                     })
                                     .join("")}
