@@ -60,6 +60,8 @@
   <div class="form-row align-items-center">
   <div class="col-auto">
       <%= f.label :wine_type, "Type:" %>
+      <%= select_tag :wine_type,
+        options_for_select(Wine::WINE_TYPES.map {|t| t}), selected: @wine.wine_type, class: 'chosen-select', multiple: false, include_blank: true%>
       <%= f.select :wine_type, options_for_select(Wine::WINE_TYPES, selected: @wine.wine_type),{class:"custom-select", multiple: false, include_blank: true} %>
     </div>
     <div class="col-auto">
