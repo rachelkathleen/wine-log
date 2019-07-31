@@ -22,18 +22,18 @@ function listeningPageLoad() {
       const formatHTML = countryData.formatHTML()
       const listDiv = document.getElementById('list')
       listDiv.innerHTML += formatHTML
-    });//a new event listener for the click
-
+    });
 
     $(".country-link").on("click", function(event) {
       event.preventDefault();
       const id = $(this).data("id");
+
       fetch(`/countries/${id}/wines`)
         .then(function(response) {
           return response.json();
         }).then(function(wines) {
                               $("#wines").html(`
-                                  <h1>number of wines: ${wines.length}
+                                  <p>number of wines: ${wines.length}</p>
                                   <p>the wines are:
                                   ${wines.map(function(wine) {
                                       return `<p>${wine.wine_name}</p>`;
