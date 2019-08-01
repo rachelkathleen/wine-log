@@ -37,7 +37,7 @@ class WinesController < ApplicationController
 
   def create
     @wine = current_user.wines.build(wine_params)
-    binding.pry
+    # binding.pry
     if @wine.save
       render json: @wine, status: 201
     else

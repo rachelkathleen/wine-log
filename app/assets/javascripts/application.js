@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.remotipart
 //= require rails-ujs
 //= require activestorage
 //= require chosen

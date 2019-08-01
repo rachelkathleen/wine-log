@@ -1,6 +1,6 @@
 <div class="container">
   <br>
-  <%= form_for @wine do |f|%>
+  <%= form_for(@wine, remote: true, multipart: true) do |f|%>
   <%= render partial: 'layouts/errors', locals: {object: @wine} %>
   <%= f.hidden_field :country_id%>
 

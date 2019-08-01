@@ -4,6 +4,22 @@
     $('form').submit(function(event) {
       //prevent form from submitting the default way
       event.preventDefault();
+
+      var formData = new FormData($(this)[0]);
+
+      $.ajax({
+         url: "/wines",
+         type: 'POST',
+         data: formData,
+         async: false,
+         cache: false,
+         contentType: false,
+         enctype: 'multipart/form-data',
+         processData: false,
+         success: function (response) {
+           alert(response);
+         }
+     });
       // Get the messages div.
 
       const formMessages = $('#form-messages');
