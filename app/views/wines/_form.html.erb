@@ -1,6 +1,6 @@
 <div class="container">
   <br>
-  <%= form_for(@wine, remote: true, multipart: true) do |f|%>
+  <%= form_for(@wine, multipart: true) do |f|%>
   <%= render partial: 'layouts/errors', locals: {object: @wine} %>
   <%= f.hidden_field :country_id%>
 
@@ -20,26 +20,14 @@
       <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= select_tag :varietal,
-        options_for_select(varietal_index.map {|v| [v.varietal_name, v.id]}), selected: @wine.varietal, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
-      <%= varietal_attr.text_field :varietal_name, {list: "varietal_names"} %>
-      <datalist id="varietal_names">
-        <% varietal_index.each do |v|%>
-        <option value="<%= v.varietal_name %>"></option>
-          <% end %>
-      </datalist>
-    <% end %>
+        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
+      <% end %>
     </div>
     <div class="col-5">
       <%= f.fields_for :country, @wine.build_country do |country_attr|%>
       <%= country_attr.label :name, "Country:" %>
       <%= select_tag :country,
-        options_for_select(country_index.map {|c| [c.country_name, c.id]}), selected: @wine.country, name: "wine[country_attributes][country_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
-      <%= country_attr.text_field :country_name, {list: "country_names"} %>
-      <datalist id="country_names">
-        <% country_index.each do |c|%>
-        <option value="<%= c.country_name %>"></option>
-          <% end %>
-      </datalist>
+        options_for_select(country_index.map {|c| [c.country_name, c.country_name]}), selected: @wine.country, name: "wine[country_attributes][country_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
     <% end %>
     </div>
   </div>
@@ -47,11 +35,14 @@
   <div class="form-row align-items-center">
     <div class="col-6">
       <%= f.label :vintage, "Vintage:" %>
-      <%= f.text_field :vintage %>
+
+      <%= select_tag :wine_type,
+        options_for_select(1900..Time.current.year), selected: @wine.vintage, name: "wine[vintage]", id: "vintage", class: 'chosen-select', multiple: false, include_blank: true%>
     </div>
     <div class="col-4">
       <%= f.label :rating, "Rating:" %>
-      <%= f.text_field :rating, placeholder: "1-10" %>
+      <%= select_tag :wine_type,
+        options_for_select(1..10), selected: @wine.rating, name: "wine[rating]", id: "wine_rating", class: 'chosen-select', multiple: false, include_blank: true%>
     </div>
   <div class="col-2">
     <div class="form-check">
