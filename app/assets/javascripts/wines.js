@@ -14,6 +14,7 @@ $(function() {
 
         var formData = new FormData($(this)[0]);
         //  debugger
+        var action = $('#myForm').attr('action');
 
         $.ajax({
             url: "/wines",
@@ -24,9 +25,7 @@ $(function() {
             contentType: false,
             enctype: 'multipart/form-data',
             processData: false,
-        }).then(function(data)
-
-            {
+        }).then(function(data){
                 const wine = data;
                 if (!data.errors) {
                     $(formMessages).addClass(

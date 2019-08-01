@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :wines, only: [:new, :create, :edit, :update, :show, :index]
+  resources :wines, only: [:new, :create, :edit, :show, :index]
   resources :users, only: [:new, :create, :edit, :update]
 
   resources :countries, only: [:index] do
     resources :wines, only: [:new, :show, :create, :index]
   end
-
-  patch 'wines/:id/edit', to: 'wines#update'
 
   root 'sessions#welcome'
   get '/goodbye' => 'sessions#goodbye'
