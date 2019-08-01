@@ -1,39 +1,39 @@
 $(function() {
 
-  //index.html.erb
-  listeningPageLoad()
+    //index.html.erb
+    listeningPageLoad()
 })
 
 class Country {
-  constructor(json) {
-    this.country_name = json.country_name;
-    this.id = json.id
-  }
+    constructor(json) {
+        this.country_name = json.country_name;
+        this.id = json.id
+    }
 }
 // HTML for the countries list
 Country.prototype.formatHTML = function() {
-  return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
+    return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
 }
 // fetches the countries json data, sets variables for each country object, the formatted html
 // from the prototype method, then sets the inner html of specified div to the formatted html
 function listeningPageLoad() {
-  $.get('/countries' + '.json', function(jsonData) {
-    jsonData.forEach(function(data) {
-      const countryData = new Country(data)
-      const formatHTML = countryData.formatHTML()
-      const listDiv = document.getElementById('list')
-      listDiv.innerHTML += formatHTML
-    });
-// creates event listener for click on a country, prevents the default action, then fetches
-// the json data for each object and displays it in the specified div
-    $(".country-link").on("click", function(event) {
-      event.preventDefault();
-      const id = $(this).data("id");
-      fetch(`/countries/${id}/wines.json`)
-        .then(function(response) {
-          return response.json();
-        }).then(function(country) {
-                              $("#wines").html(`<div class="container">
+    $.get('/countries' + '.json', function(jsonData) {
+        jsonData.forEach(function(data) {
+            const countryData = new Country(data)
+            const formatHTML = countryData.formatHTML()
+            const listDiv = document.getElementById('list')
+            listDiv.innerHTML += formatHTML
+        });
+        // creates event listener for click on a country, prevents the default action, then fetches
+        // the json data for each object and displays it in the specified div
+        $(".country-link").on("click", function(event) {
+            event.preventDefault();
+            const id = $(this).data("id");
+            fetch(`/countries/${id}/wines.json`)
+                .then(function(response) {
+                    return response.json();
+                }).then(function(country) {
+                    $("#wines").html(`<div class="container">
                                   <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
                                   <dd>
                                   ${country.wines.map(function(wine) {
@@ -42,27 +42,27 @@ function listeningPageLoad() {
                                     .join("")}
                                     </div>`)
 
-    })
-  })
+                })
+        })
     });
-  }
-  // search bar
-    function searchFunction() {
-      // Declare variables
-      var input, filter, dl, dt, a, i, txtValue;
-      input = document.getElementById('myInput');
-      filter = input.value.toUpperCase();
-      dl = document.getElementById("list");
-      dt = dl.getElementsByTagName('dt');
+}
+// search bar
+function searchFunction() {
+    // Declare variables
+    var input, filter, dl, dt, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    dl = document.getElementById("list");
+    dt = dl.getElementsByTagName('dt');
 
-      // Loop through all list items, and hide those who don't match the search query
-      for (i = 0; i < dt.length; i++) {
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < dt.length; i++) {
         a = dt[i].getElementsByTagName("a")[0];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          dt[i].style.display = "";
+            dt[i].style.display = "";
         } else {
-          dt[i].style.display = "none";
+            dt[i].style.display = "none";
         }
-      }
     }
+}
