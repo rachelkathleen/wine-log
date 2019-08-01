@@ -20,7 +20,7 @@
       <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= select_tag :varietal,
-        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
+        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal, placeholder: "Select a varietal", name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
       <% end %>
     </div>
     <div class="col-5">
@@ -83,8 +83,8 @@
         options_for_select(term_index.map {|t| [t.term, t.id]}), name: "wine[tasting_term_ids][]", id: "tasting_term_ids", class: 'chosen-select', multiple: true %>
 
 
-      <small id="HelpBlock" class="form-text text-muted">Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth.</small>
-      <small id="HelpBlock" class="form-text text-muted">Look at the <%= link_to "glossary", glossary_path, class:'black-link', target:'_blank' %> to learn what they mean.</small>
+      <small id="HelpBlock" class="form-text text-muted">Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth. Look at the <%= link_to "glossary", glossary_path, class:'black-link', target:'_blank' %> to learn what they mean.</small>
+
     </div>
   </div>
   <br>
@@ -103,9 +103,9 @@
   <%= f.submit %>
   <% end %>
 </div>
-
+<!-- 
 <script>
   jQuery(document).ready(function(){
   	jQuery(".chosen").chosen();
   });
-</script>
+</script> -->
