@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :wines, only: [:new, :show, :create, :index]
   end
 
-
+  patch 'wines/:id/edit', to: 'wines#update'
 
   root 'sessions#welcome'
   get '/goodbye' => 'sessions#goodbye'

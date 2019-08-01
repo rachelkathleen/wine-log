@@ -44,7 +44,8 @@ gem 'foreman'
 gem 'active_model_serializers'
 
 
-gem 'jquery-rails'
+gem 'jquery-rails','~> 4.3.3'
+gem 'remotipart', '~> 1.2'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
