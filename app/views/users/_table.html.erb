@@ -7,7 +7,7 @@
       <th scope="col">Vintage</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="wine-table">
     <% object.each do |wine| %>
     <tr>
       <td style="padding-left: 40px"><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
