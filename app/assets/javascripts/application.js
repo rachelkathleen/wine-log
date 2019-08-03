@@ -20,3 +20,9 @@
 $(document).ready(function() {
   $(".chosen-select").chosen();
 });
+
+$(function() {
+
+    //index.html.erb
+    listeningPageLoad()
+})

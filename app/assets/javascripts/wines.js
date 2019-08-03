@@ -1,3 +1,8 @@
+$(function() {
+
+    //home.html.erb
+    homePageLoad()
+})
 class Wine {
     constructor(json) {
         this.id = json.id;
@@ -15,66 +20,66 @@ class Wine {
         this.wine_aromas = json.wine_aromas;
         this.wine_tasting_terms = json.wine_tasting_terms
     }
+  }
+
+Wine.prototype.tableHTML = function() {
+      return `<tr>
+                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-table" href="#">${this.producer} - ${this.wine_name}</a></td>
+                <td>${this.wine_name}</td>
+                <td>${this.vintage}</td>
+              </tr>`
+            }
 
 Wine.prototype.showHTML = function() {
-    return `<div class="card-body">
+    let winePicture = this.picture ? `<image src="${this.picture}" />` : null
+    return `<div class="picture">
+            winePicture
+          </div>
+            <div class="card-body">
               <h5 class="card-title"><b>${this.producer} - ${this.wine_name}</b></h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><b>Country:</b> ${this.country.country_name}</li>
               <li class="list-group-item"><b>Vintage:</b> ${this.vintage}</li>
+              <li class="list-group-item"><b>Rating:</b> ${this.rating}</li>
             </ul>
             <div class="card-body" align="center">
-              <button type="button" class="link_button"><%= link_to "Full Details", wine_path(${this.id}), target:'_blank' %></button>
+              <p>link to full page</p>
             </div>
           </div>`
         }
 
-Wine.prototype.tableHTML = function() {
-    return
-          `<tr>
-            <td style="padding-left: 40px"><%= link_to wine.producer, wine_path(wine), class:'black-link'%></td>
-            <td>${this.wine_name}</td>
-            <td>${this.vintage}</td>
-          </tr>`
-        }
-
-  function listeningPageLoad() {
+  function homePageLoad() {
       $.get('/wines' + '.json', function(jsonData) {
           jsonData.forEach(function(data) {
               const wineData = new Wine(data)
-              const formatHTML = wineData.formatHTML()
-              const modalDiv = document.getElementById('modal')
-              modalDiv.innerHTML += showtHTML
+              const tableHTML = wineData.tableHTML()
+              const wineDiv = document.getElementById('wine-js')
+              wineDiv.innerHTML += tableHTML
+              // debugger
+
           });
           // creates event listener for click on a wine, prevents the default action, then fetches
           // the json data for each object and displays it in the specified div
-          // $(".country-link").on("click", function(event) {
-          //     event.preventDefault();
-          //     const id = $(this).data("id");
-          //     fetch(`/countries/${id}/wines.json`)
-          //         .then(function(response) {
-          //             return response.json();
-          //         }).then(function(country) {
-          //             $("#wines").html(`<div class="container">
-          //                           <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
-          //                           <dd>
-          //                           ${country.wines.map(function(wine) {
-          //                               return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
-          //                             })
-          //                             .join("")}
-          //                             </div>`)
+          $("wine-table").on("click", function(event) {
+              event.preventDefault();
+              const id = $(this).data("id");
+              fetch(`/wines/${id}.json`)
+                  .then(function(response) {
+                      return response.json();
+                  }).then(function(wine) {
+                      $("#modal").html(showHTML)
 
-          //         })
-          // })
+                  })
+          })
       });
   }
 
-
-
-
-
-
+//
+//
+//
+//
+//
 // New wine form submits dynamically, then shows success message with link to
 // view new object, or error messages if not created
 $(function() {
