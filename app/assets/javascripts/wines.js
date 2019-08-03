@@ -23,8 +23,8 @@ class Wine {
   }
 
 Wine.prototype.tableHTML = function() {
-      return `<tr>
-                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-table" href="#">${this.producer} - ${this.wine_name}</a></td>
+      return `<tr class="wine-list">
+                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-table" href="#">${this.producer}</a></td>
                 <td>${this.wine_name}</td>
                 <td>${this.vintage}</td>
               </tr>`
@@ -134,3 +134,26 @@ $(function() {
             });
     });
 })
+
+
+// search bar
+function searchFunction() {
+    // Declare variables
+    var input, filter, tr, td, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    tr = document.getElementsByClassName("wine-list");
+    // td = tr.getElementsByTagName('td');
+
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        row = tr[i];
+        txtValue = row.textContent || row.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none"; debugger
+        }
+    }
+}

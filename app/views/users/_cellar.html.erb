@@ -1,3 +1,9 @@
+<div class="container">
+  <div class="top-container">
+  <h5 align="center"><b>All Wines</b></h5>
+</div>
+<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for wines...">
+
 <div class="table-responsive">
   <table class="u-full-width">
   <thead class="table-head">
@@ -7,10 +13,11 @@
       <th scope="col">Vintage</th>
     </tr>
   </thead>
-  <tbody class="wine-table" id="wine-js">
+  <tbody class="wine-table" id="wine-js" data-user-id="<%= @user.id %>">
         <!-- should show wines -->
   </tbody>
 </table>
+</div>
 </div>
 <div class="container">
 
