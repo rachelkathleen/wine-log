@@ -4,6 +4,8 @@ class WinesController < ApplicationController
   def index
     if params[:country_id] && country = Country.find_by_id(params[:country_id])
       @wines = Country.find_by_id(params[:country_id])
+    elsif logged_in?
+      @wines = current_user.wines
     else
       @wines = Wine.all
     end

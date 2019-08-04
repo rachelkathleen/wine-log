@@ -24,7 +24,7 @@ class Wine {
 
 Wine.prototype.tableHTML = function() {
       return `<tr class="wine-list">
-                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-table" href="#">${this.producer}</a></td>
+                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-link" href="#">${this.producer}</a></td>
                 <td>${this.wine_name}</td>
                 <td>${this.vintage}</td>
               </tr>`
@@ -33,7 +33,7 @@ Wine.prototype.tableHTML = function() {
 Wine.prototype.showHTML = function() {
     let winePicture = this.picture ? `<image src="${this.picture}" />` : null
     return `<div class="picture">
-            winePicture
+            ${winePicture}
           </div>
             <div class="card-body">
               <h5 class="card-title"><b>${this.producer} - ${this.wine_name}</b></h5>
@@ -61,14 +61,17 @@ Wine.prototype.showHTML = function() {
           });
           // creates event listener for click on a wine, prevents the default action, then fetches
           // the json data for each object and displays it in the specified div
-          $("wine-table").on("click", function(event) {
+          $(".wine-link").on("click", function(event) {
               event.preventDefault();
               const id = $(this).data("id");
               fetch(`/wines/${id}.json`)
                   .then(function(response) {
                       return response.json();
                   }).then(function(wine) {
-                      $("#modal").html(showHTML)
+                      const modalDiv = document.getElementById('modal')
+                      alert("yayyy");
+                      modalDiv.innerHTML += wine.showHTML
+                      debugger
 
                   })
           })
