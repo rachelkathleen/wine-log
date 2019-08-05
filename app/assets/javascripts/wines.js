@@ -24,7 +24,7 @@ class Wine {
 
 Wine.prototype.tableHTML = function() {
       return `<tr class="wine-list">
-                <td style="padding-left: 40px"><a data-id='${this.id}' class="black-link wine-link" href="#">${this.producer}</a></td>
+                <td style="padding-left: 40px"><a data-id='${this.id}' data-toggle="modal" data-target="#myModal" class="black-link wine-link" href="#">${this.producer}</a></td>
                 <td>${this.wine_name}</td>
                 <td>${this.vintage}</td>
               </tr>`
@@ -32,7 +32,11 @@ Wine.prototype.tableHTML = function() {
 
 function wineModal(wine) {
     const winePicture = wine.picture ? `<image src="${wine.picture}" />` : null
-    return `<div class="picture">
+    return `<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="picture">
             ${winePicture}
           </div>
             <div class="card-body">
@@ -45,10 +49,19 @@ function wineModal(wine) {
               <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
             </ul>
             <div class="card-body" align="center">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               <p><a href="#">View Full Details</a></p>
+            </div>
+              <p><a href="#">View Full Details</a></p>
+            
+              </div>
+            </div>
             </div>
           </div>`
         }
+
+
 
   function homePageLoad() {
       $.get('/wines' + '.json', function(jsonData) {
@@ -69,7 +82,7 @@ function wineModal(wine) {
                   .then(function(response) {
                       return response.json();
                   }).then(function(wine) {
-                      const modalDiv = document.getElementById('modal')
+                      const modalDiv = document.getElementById('myModal')
                       // alert("yayyy");
                       modalDiv.innerHTML += wineModal(wine)
 
