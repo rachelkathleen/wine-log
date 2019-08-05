@@ -30,21 +30,22 @@ Wine.prototype.tableHTML = function() {
               </tr>`
             }
 
-Wine.prototype.showHTML = function() {
-    let winePicture = this.picture ? `<image src="${this.picture}" />` : null
+function wineModal(wine) {
+    const winePicture = wine.picture ? `<image src="${wine.picture}" />` : null
     return `<div class="picture">
             ${winePicture}
           </div>
             <div class="card-body">
-              <h5 class="card-title"><b>${this.producer} - ${this.wine_name}</b></h5>
+              <h5 class="card-title"><b>${wine.producer} - ${wine.wine_name}</b></h5>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>Country:</b> ${this.country.country_name}</li>
-              <li class="list-group-item"><b>Vintage:</b> ${this.vintage}</li>
-              <li class="list-group-item"><b>Rating:</b> ${this.rating}</li>
+              <li class="list-group-item"><b>Country:</b> ${wine.country.country_name}</li>
+              <li class="list-group-item"><b>Vintage:</b> ${wine.vintage}</li>
+              <li class="list-group-item"><b>Varietal:</b> ${wine.varietal.varietal_name}</li>
+              <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
             </ul>
             <div class="card-body" align="center">
-              <p>link to full page</p>
+              <p><a href="#">View Full Details</a></p>
             </div>
           </div>`
         }
@@ -69,9 +70,8 @@ Wine.prototype.showHTML = function() {
                       return response.json();
                   }).then(function(wine) {
                       const modalDiv = document.getElementById('modal')
-                      alert("yayyy");
-                      modalDiv.innerHTML += wine.showHTML
-                      debugger
+                      // alert("yayyy");
+                      modalDiv.innerHTML += wineModal(wine)
 
                   })
           })

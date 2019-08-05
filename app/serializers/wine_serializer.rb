@@ -10,6 +10,6 @@ class WineSerializer < ActiveModel::Serializer
   has_many :wine_tasting_terms, serializer: TastingTermSerializer
 
   def picture
-    rails_blob_path(object.picture, only_path: true) if object.picture.attached?
+    rails_blob_path(object.picture, disposition: "attachment", only_path: true) if object.picture.attached?
   end
 end
