@@ -20,15 +20,15 @@ class Wine {
         this.wine_aromas = json.wine_aromas;
         this.wine_tasting_terms = json.wine_tasting_terms
     }
-  }
+}
 
 Wine.prototype.tableHTML = function() {
-      return `<tr class="wine-list">
+    return `<tr class="wine-list">
                 <td style="padding-left: 40px"><a data-id='${this.id}' data-toggle="modal" data-target="#myModal" class="black-link wine-link" href="#">${this.producer}</a></td>
                 <td>${this.wine_name}</td>
                 <td>${this.vintage}</td>
               </tr>`
-            }
+}
 
 function wineModal(wine) {
     const winePicture = wine.picture ? `<image src="${wine.picture}" />` : null
@@ -50,46 +50,55 @@ function wineModal(wine) {
             </ul>
             <div class="card-body" align="center">
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <p><a href="#">View Full Details</a></p>
+              <button type="button" aria-label="Close" class="btn btn-default close" id="btnClosePopup" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+
             </div>
               <p><a href="#">View Full Details</a></p>
-            
+
               </div>
             </div>
             </div>
-          </div>`
-        }
+          </div>>`
+}
 
 
 
-  function homePageLoad() {
-      $.get('/wines' + '.json', function(jsonData) {
-          jsonData.forEach(function(data) {
-              const wineData = new Wine(data)
-              const tableHTML = wineData.tableHTML()
-              const wineDiv = document.getElementById('wine-js')
-              wineDiv.innerHTML += tableHTML
-              // debugger
+function homePageLoad() {
+    $.get('/wines' + '.json', function(jsonData) {
+        jsonData.forEach(function(data) {
+            const wineData = new Wine(data)
+            const tableHTML = wineData.tableHTML()
+            const wineDiv = document.getElementById('wine-js')
+            wineDiv.innerHTML += tableHTML
+                // debugger
 
-          });
-          // creates event listener for click on a wine, prevents the default action, then fetches
-          // the json data for each object and displays it in the specified div
-          $(".wine-link").on("click", function(event) {
-              event.preventDefault();
-              const id = $(this).data("id");
-              fetch(`/wines/${id}.json`)
-                  .then(function(response) {
-                      return response.json();
-                  }).then(function(wine) {
-                      const modalDiv = document.getElementById('myModal')
-                      // alert("yayyy");
-                      modalDiv.innerHTML += wineModal(wine)
+        });
+        // creates event listener for click on a wine, prevents the default action, then fetches
+        // the json data for each object and displays it in the specified div
+        $(".wine-link").on("click", function(event) {
+            event.preventDefault();
+            const id = $(this).data("id");
+            fetch(`/wines/${id}.json`)
+                .then(function(response) {
+                    return response.json();
+                }).then(function(wine) {
+                    const modalDiv = document.getElementById('myModal')
+                        // alert("yayyy");
+                    modalDiv.innerHTML += wineModal(wine)
 
-                  })
-          })
-      });
-  }
+
+                        $("#btnClosePopup").click(function () {
+                          $(modalDiv).modal("hide");
+                        });
+
+
+
+                })
+
+        })
+    });
+}
+
 
 //
 //
@@ -112,42 +121,43 @@ $(function() {
 
         var formData = new FormData($(this)[0]);
         //  debugger
-        var action = $('#myForm').attr('action');
+        var action = $(this).attr('action');
+        const type = action === '/wines' ? 'POST' : 'PATCH'
 
         $.ajax({
-            url: "/wines",
-            type: 'POST',
+            url: action,
+            type: type,
             data: formData,
             async: true,
             cache: false,
             contentType: false,
             enctype: 'multipart/form-data',
             processData: false,
-        }).then(function(data){
-                const wine = data;
-                if (!data.errors) {
-                    $(formMessages).addClass(
-                        'alert-success');
-                    $(formMessages).show();
-                    document.querySelector('#form-messages')
-                        .innerHTML +=
-                        `<p>${wine.producer} - ${wine.wine_name} has been added to your cellar - click <a class="alert-link" href="/wines/${wine.id}">here</a> to view. </p>`
-                    $("#producer").text(wine["producer"]);
-                    $("#wineName").text(wine["wine_name"]);
-                    $('form')[0].reset();
-                } else {
-                    $(formMessages).addClass(
-                        'alert-danger');
-                    $(formMessages).show();
+        }).then(function(data) {
+            const wine = data;
+            if (!data.errors) {
+                $(formMessages).addClass(
+                    'alert-success');
+                $(formMessages).show();
+                document.querySelector('#form-messages')
+                    .innerHTML +=
+                    `<p>${wine.producer} - ${wine.wine_name} has been added to your cellar - click <a class="alert-link" href="/wines/${wine.id}">here</a> to view. </p>`
+                $("#producer").text(wine["producer"]);
+                $("#wineName").text(wine["wine_name"]);
+                $('form')[0].reset();
+            } else {
+                $(formMessages).addClass(
+                    'alert-danger');
+                $(formMessages).show();
 
-                    data.errors.forEach(function(error) {
-                        document.querySelector(
-                                '#form-messages')
-                            .innerHTML +=
-                            `<p>${error}</p>`
-                    })
-                }
-            });
+                data.errors.forEach(function(error) {
+                    document.querySelector(
+                            '#form-messages')
+                        .innerHTML +=
+                        `<p>${error}</p>`
+                })
+            }
+        });
     });
 })
 
@@ -169,7 +179,8 @@ function searchFunction() {
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
         } else {
-            tr[i].style.display = "none"; debugger
+            tr[i].style.display = "none";
+            debugger
         }
     }
 }

@@ -17,6 +17,7 @@
 //= require chosen
 //= require_tree .
 
+// chosen jquery for form
 $(document).ready(function() {
   $(".chosen-select").chosen();
 });

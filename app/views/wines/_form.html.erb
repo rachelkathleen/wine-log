@@ -20,7 +20,7 @@
       <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= select_tag :varietal,
-        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal, value: @wine.varietal_id, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
+        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal.varietal_name, value: @wine.varietal_id, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: "chosen-select result-selected", multiple: false, include_blank: true%>
       <% end %>
     </div>
     <div class="col-5">

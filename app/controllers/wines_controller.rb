@@ -62,9 +62,9 @@ class WinesController < ApplicationController
       redirect_to home_path
     end
     if @wine.update(wine_params)
-      redirect_to wine_path(@wine)
+      render json: @wine, status: 201
     else
-      render :edit
+      render json: {errors: @wine.errors.full_messages}
     end
   end
 
