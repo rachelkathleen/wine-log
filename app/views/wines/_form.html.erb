@@ -1,3 +1,6 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+
 <div class="container">
   <br>
   <%= form_for(@wine, multipart: true) do |f|%>
@@ -20,14 +23,14 @@
       <%= f.fields_for :varietal, @wine.build_varietal do |varietal_attr|%>
       <%= varietal_attr.label :name, "Varietal:" %>
       <%= select_tag :varietal,
-        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal.varietal_name, value: @wine.varietal_id, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: "chosen-select result-selected", multiple: false, include_blank: true%>
+        options_for_select(varietal_index.map {|v| [v.varietal_name, v.varietal_name]}), selected: @wine.varietal.varietal_name, value: @wine.varietal_id, name: "wine[varietal_attributes][varietal_name]", id: "wine_varietal_attributes_varietal_name", class: "js-example-basic-single", multiple: false, include_blank: true%>
       <% end %>
     </div>
     <div class="col-5">
       <%= f.fields_for :country, @wine.build_country do |country_attr|%>
       <%= country_attr.label :name, "Country:" %>
       <%= select_tag :country,
-        options_for_select(country_index.map {|c| [c.country_name, c.country_name]}), selected: @wine.country, name: "wine[country_attributes][country_name]", id: "wine_varietal_attributes_varietal_name", class: 'chosen-select', multiple: false, include_blank: true%>
+        options_for_select(country_index.map {|c| [c.country_name, c.country_name]}), selected: @wine.country, name: "wine[country_attributes][country_name]", id: "wine_varietal_attributes_varietal_name", class: 'js-example-basic-single', multiple: false, include_blank: true%>
     <% end %>
     </div>
   </div>
@@ -36,13 +39,13 @@
     <div class="col-6">
       <%= f.label :vintage, "Vintage:" %>
 
-      <%= select_tag :wine_type,
-        options_for_select(1900..Time.current.year), selected: @wine.vintage, name: "wine[vintage]", id: "vintage", class: 'chosen-select', multiple: false, include_blank: true%>
+      <%= select_tag :vintage,
+        options_for_select(1900..Time.current.year), selected: @wine.vintage, name: "wine[vintage]", id: "vintage", class: 'js-example-basic-single', multiple: false, include_blank: true%>
     </div>
     <div class="col-4">
       <%= f.label :rating, "Rating:" %>
-      <%= select_tag :wine_type,
-        options_for_select(1..10), selected: @wine.rating, name: "wine[rating]", id: "wine_rating", class: 'chosen-select', multiple: false, include_blank: true%>
+      <%= select_tag :rating,
+        options_for_select(1..10), selected: @wine.rating, name: "wine[rating]", id: "wine_rating", class: 'js-example-basic-single', multiple: false, include_blank: true%>
     </div>
   <div class="col-2">
     <div class="form-check">
@@ -55,14 +58,14 @@
 
   <div class="form-row align-items-center">
   <div class="col-6">
-      <%= f.label :wine_type, "Type:" %>
+      <%= f.label :wine_type, "Type:" %><br>
       <%= select_tag :wine_type,
-        options_for_select(Wine::WINE_TYPES.map {|t| t}), selected: @wine.wine_type, name: "wine[wine_type]", id: "wine_wine_type", class: 'chosen-select', multiple: false, include_blank: true%>
+        options_for_select(Wine::WINE_TYPES.map {|t| t}), selected: @wine.wine_type, name: "wine[wine_type]", id: "wine_wine_type", class: 'js-example-basic-single', multiple: false, include_blank: true%>
     </div>
     <div class="col-6">
       <%= f.label :price_range, "Price Range:" %>
       <%= select_tag :wine_type,
-        options_for_select(Wine::PRICE_RANGES.map {|t| t}), selected: @wine.price_range, name: "wine[price_range]", id: "wine_price_range", class: 'chosen-select', multiple: false, include_blank: true%>
+        options_for_select(Wine::PRICE_RANGES.map {|t| t}), selected: @wine.price_range, name: "wine[price_range]", id: "wine_price_range", class: 'js-example-basic-single', multiple: false, include_blank: true%>
 
     </div>
   </div>
@@ -72,7 +75,7 @@
     <div class="col-6">
       <%= f.label :aroma_ids, "Wine Aromas:" %><br>
       <%= select_tag "aromas",
-        options_for_select(aroma_index.map {|aroma| [aroma.aroma_name, aroma.id]}), name: "wine[aroma_ids][]", id: "wine_aroma_ids", class: 'chosen-select', multiple: true %>
+        options_for_select(aroma_index.map {|aroma| [aroma.aroma_name, aroma.id]}), name: "wine[aroma_ids][]", id: "wine_aroma_ids", class: 'js-example-basic-multiple', multiple: true %>
       <small id="HelpBlock" class="form-text text-muted">
     <%= link_to "Aromas", aromas_path, class:'black-link', target:'_blank' %> refer to what you can smell in a wine - you can choose one or many.</small>
     <small id="HelpBlock" class="form-text text-muted">   <br></small>
@@ -80,7 +83,7 @@
     <div class="col-6">
       <%= f.label :tasting_term_ids, "Tasting terms:" %><br>
       <%= select_tag "terms",
-        options_for_select(term_index.map {|t| [t.term, t.id]}), name: "wine[tasting_term_ids][]", id: "tasting_term_ids", class: 'chosen-select', multiple: true, value: @wine.aroma_ids %>
+        options_for_select(term_index.map {|t| [t.term, t.id]}), name: "wine[tasting_term_ids][]", id: "tasting_term_ids", class: 'js-example-basic-multiple', multiple: true, value: @wine.aroma_ids %>
 
 
       <small id="HelpBlock" class="form-text text-muted">Tasting terms are used to decribe the taste of a wine, or they way it feels in your mouth. Look at the <%= link_to "glossary", glossary_path, class:'black-link', target:'_blank' %> to learn what they mean.</small>

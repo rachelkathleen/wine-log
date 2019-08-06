@@ -50,8 +50,8 @@ function wineModal(wine) {
             </ul>
             <div class="card-body" align="center">
             <div class="modal-footer">
-              <button type="button" aria-label="Close" class="btn btn-default close" id="btnClosePopup" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-
+              <button type="button" aria-label="close" class="btn btn-default close" id="btnClosePopup" data-dismiss="modal">Close</button>
+              <p><a href="#">View Full Details</a></p>
             </div>
               <p><a href="#">View Full Details</a></p>
 

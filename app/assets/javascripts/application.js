@@ -14,12 +14,24 @@
 //= require jquery.remotipart
 //= require rails-ujs
 //= require activestorage
-//= require chosen
+//= require select2
 //= require_tree .
 
 // chosen jquery for form
+// $(document).ready(function() {
+//   $(".chosen-select").chosen();
+// });
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});
+
 $(document).ready(function() {
-  $(".chosen-select").chosen();
+  $('.js-example-basic-single').select2();
+});
+
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
 });
 
 $(function() {

@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require chosen-bootstrap
+ *= require select2-bootstrap
  *= require_tree .
  *= require_self
  */
@@ -23,7 +23,9 @@ Light gray #F3F3F3 */
 * {
     font-family: "Yeseva One";
   }
-
+.js-example-basic-single, .js-example-basic-multiple {
+  width: 90%
+}
 
 ul.horizontal_menu li {
       display: inline;
