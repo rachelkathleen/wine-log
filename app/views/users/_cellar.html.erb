@@ -1,8 +1,11 @@
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/css/bootstrap-modal-bs3patch.css">
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <!-- show wine info -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="please-work">
 
+    </div>
+  </div>
 </div>
 
 <div class="container">
@@ -25,16 +28,4 @@
   </tbody>
 </table>
 </div>
-</div>
-<div class="container">
-
-<div class="top-container">
-  <h5 align="center"><b>All Wines</b></h5>
-</div>
-
-<%= render partial: 'users/table', locals: {object: @user.wines} %>
-<div class="top-container">
-  <h5 align="center"><b>Favorite Wines</b></h5>
-</div>
-<%= render partial: 'users/table', locals: {object: @user.wines.is_favorite} %>
 </div>

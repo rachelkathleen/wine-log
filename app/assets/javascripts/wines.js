@@ -24,41 +24,39 @@ class Wine {
 
 Wine.prototype.tableHTML = function() {
     return `<tr class="wine-list">
-                <td style="padding-left: 40px"><a data-id='${this.id}' data-toggle="modal" data-target="#myModal" class="black-link wine-link" href="#">${this.producer}</a></td>
+                <td style="padding-left: 40px"><a data-id='${this.id}' class="wine-link black-link" data-toggle="modal" data-target="#exampleModal" href="#">${this.producer}</a></td>
                 <td>${this.wine_name}</td>
                 <td>${this.vintage}</td>
               </tr>`
 }
 
 function wineModal(wine) {
-    const winePicture = wine.picture ? `<image src="${wine.picture}" />` : null
-    return `<div class="modal-dialog">
-    <div class="modal-content">
-    <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal">&times;</button>
+    const winePicture = wine.picture ? `<img src="${wine.picture}" style="height:100px;` : null
+    return (`<div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"><b>${wine.producer} - ${wine.wine_name}</b></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
     <div class="picture">
             ${winePicture}
           </div>
-            <div class="card-body">
-              <h5 class="card-title"><b>${wine.producer} - ${wine.wine_name}</b></h5>
-            </div>
+
+            <div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><b>Country:</b> ${wine.country.country_name}</li>
               <li class="list-group-item"><b>Vintage:</b> ${wine.vintage}</li>
               <li class="list-group-item"><b>Varietal:</b> ${wine.varietal.varietal_name}</li>
               <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
             </ul>
-            <div class="card-body" align="center">
-            <div class="modal-footer">
-              <button type="button" aria-label="close" class="btn btn-default close" id="btnClosePopup" data-dismiss="modal">Close</button>
-              <p><a href="#">View Full Details</a></p>
-            </div>
-              <p><a href="#">View Full Details</a></p>
+          </div>
 
-              </div>
-            </div>
-            </div>
-          </div>>`
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>`)
 }
 
 
@@ -82,14 +80,16 @@ function homePageLoad() {
                 .then(function(response) {
                     return response.json();
                 }).then(function(wine) {
-                    const modalDiv = document.getElementById('myModal')
+                    const modalDiv = document.getElementById('please-work')
                         // alert("yayyy");
-                    modalDiv.innerHTML += wineModal(wine)
+                    modalDiv.innerHTML = wineModal(wine)
 
 
-                        $("#btnClosePopup").click(function () {
-                          $(modalDiv).modal("hide");
-                        });
+
+                        //
+                        // $("#btnClosePopup").click(function () {
+                        //   $(modalDiv).modal("hide");
+                        // });
 
 
 
