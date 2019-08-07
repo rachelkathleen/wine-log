@@ -31,7 +31,7 @@ Wine.prototype.tableHTML = function() {
             </tr>`
           }
 function showPicture(wine) {
-  const winePicture = wine.picture ? `<div class="picture"><img src="${wine.picture}" style="height:200px"></div>` : ""
+  const winePicture = wine.picture ? `<div class="picture"><img src="${wine.picture}" style="width:60%"></div>` : ""
   return winePicture
 }
 // format for interior of wine modal
