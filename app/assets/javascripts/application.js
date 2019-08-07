@@ -21,7 +21,7 @@
 // $(document).ready(function() {
 //   $(".chosen-select").chosen();
 // });
-
+// select2 javascripts
 $( "#dropdown" ).select2({
     theme: "bootstrap"
 });
@@ -33,9 +33,4 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
 });
-
-$(function() {
-
-    //index.html.erb
-    listeningPageLoad()
-})
+// end of select2 javascripts

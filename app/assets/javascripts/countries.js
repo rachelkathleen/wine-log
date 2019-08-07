@@ -1,3 +1,8 @@
+$(function() {
+
+    //index.html.erb
+    listeningPageLoad()
+})
 class Country {
     constructor(json) {
         this.country_name = json.country_name;

@@ -22,89 +22,73 @@ class Wine {
     }
 }
 
+// formats table rows for wine index
 Wine.prototype.tableHTML = function() {
     return `<tr class="wine-list">
-                <td style="padding-left: 40px"><a data-id='${this.id}' class="wine-link black-link" data-toggle="modal" data-target="#exampleModal" href="#">${this.producer}</a></td>
-                <td>${this.wine_name}</td>
-                <td>${this.vintage}</td>
-              </tr>`
+              <td style="padding-left: 40px"><a data-id='${this.id}' class="wine-link black-link" data-toggle="modal" data-target="#exampleModal" href="#">${this.producer}</a></td>
+              <td>${this.wine_name}</td>
+              <td>${this.vintage}</td>
+            </tr>`
+          }
+function showPicture(wine) {
+  const winePicture = wine.picture ? `<div class="picture"><img src="${wine.picture}" style="height:200px"></div>` : ""
+  return winePicture
 }
-
+// format for interior of wine modal
 function wineModal(wine) {
-    const winePicture = wine.picture ? `<img src="${wine.picture}" style="height:100px;` : null
+    const wineLink = "/wines/"+`${wine.id}`
     return (`<div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel"><b>${wine.producer} - ${wine.wine_name}</b></h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-    <div class="picture">
-            ${winePicture}
-          </div>
-
-            <div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>Country:</b> ${wine.country.country_name}</li>
-              <li class="list-group-item"><b>Vintage:</b> ${wine.vintage}</li>
-              <li class="list-group-item"><b>Varietal:</b> ${wine.varietal.varietal_name}</li>
-              <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
-            </ul>
-          </div>
-
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>`)
-}
+               <h2 class="modal-title" id="exampleModalLabel"><b>${wine.producer} - ${wine.wine_name}</b></h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               ${showPicture(wine)}
+               <div>
+                  <ul class="list-group list-group-flush">
+                     <li class="list-group-item"><b>Country:</b> ${wine.country.country_name}</li>
+                     <li class="list-group-item"><b>Vintage:</b> ${wine.vintage}</li>
+                     <li class="list-group-item"><b>Varietal:</b> ${wine.varietal.varietal_name}</li>
+                     <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="link_button"><a href="${wineLink}">View Details</a></button>
+            </div>`)
+          }
 
 
+          function homePageLoad() {
+          	$.get('/wines' + '.json', function (jsonData) {
+          		jsonData.forEach(function (data) {
+          			const wineData = new Wine(data)
+          			const tableHTML = wineData.tableHTML()
+          			const wineDiv = document.getElementById('wine-js')
+          			wineDiv.innerHTML += tableHTML
 
-function homePageLoad() {
-    $.get('/wines' + '.json', function(jsonData) {
-        jsonData.forEach(function(data) {
-            const wineData = new Wine(data)
-            const tableHTML = wineData.tableHTML()
-            const wineDiv = document.getElementById('wine-js')
-            wineDiv.innerHTML += tableHTML
-                // debugger
+          		});
+          		// creates event listener for click on a wine, prevents the default action, then fetches
+          		// the json data for each object and displays it in the specified div
+          		$(".wine-link").on("click", function (event) {
+          			event.preventDefault();
+          			const id = $(this).data("id");
+          			fetch(`/wines/${id}.json`)
+          				.then(function (response) {
+          					return response.json();
+          				}).then(function (wine) {
+          					const modalDiv = document.getElementById('please-work')
+          					// alert("yayyy");
+          					modalDiv.innerHTML = wineModal(wine)
 
-        });
-        // creates event listener for click on a wine, prevents the default action, then fetches
-        // the json data for each object and displays it in the specified div
-        $(".wine-link").on("click", function(event) {
-            event.preventDefault();
-            const id = $(this).data("id");
-            fetch(`/wines/${id}.json`)
-                .then(function(response) {
-                    return response.json();
-                }).then(function(wine) {
-                    const modalDiv = document.getElementById('please-work')
-                        // alert("yayyy");
-                    modalDiv.innerHTML = wineModal(wine)
+          				})
 
-
-
-                        //
-                        // $("#btnClosePopup").click(function () {
-                        //   $(modalDiv).modal("hide");
-                        // });
+          		})
+          	});
+          }
 
 
-
-                })
-
-        })
-    });
-}
-
-
-//
-//
-//
-//
-//
 // New wine form submits dynamically, then shows success message with link to
 // view new object, or error messages if not created
 $(function() {
@@ -164,23 +148,20 @@ $(function() {
 
 // search bar
 function searchFunction() {
-    // Declare variables
-    var input, filter, tr, td, a, i, txtValue;
-    input = document.getElementById('myInput');
-    filter = input.value.toUpperCase();
-    tr = document.getElementsByClassName("wine-list");
-    // td = tr.getElementsByTagName('td');
+	// Declare variables
+	var input, filter, tr, td, a, i, txtValue;
+	input = document.getElementById('myInput');
+	filter = input.value.toUpperCase();
+	tr = document.getElementsByClassName("wine-list");
 
-
-    // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-        row = tr[i];
-        txtValue = row.textContent || row.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-            debugger
-        }
-    }
+	// Loop through all list items, and hide those who don't match the search query
+	for (i = 0; i < tr.length; i++) {
+		row = tr[i];
+		txtValue = row.textContent || row.innerText;
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			tr[i].style.display = "";
+		} else {
+			tr[i].style.display = "none";
+		}
+	}
 }
