@@ -6,7 +6,7 @@ $(function() {
 class Wine {
   static all = [];
   static filteredWines = [];
-  static filteredSelection = ""
+  static filteredSelection = null
 
     constructor(json) {
         this.id = json.id;
@@ -31,12 +31,31 @@ class Wine {
 //   a. need way to store filtered wines as a new array - create a constant?
 //   b. add event listener when filter button is clicked to add filtered selection to table
 // 3. have way to reset to all wines
-// //filter by wine type
-// Wine.filterByType = Wine.all.filter(wine => wine.wineType);
-// // filter by if it's a favorite
-// Wine.favoriteWines = Wine.all.filter(wine => wine.favorite);
+
+static renderFilteredList() {
+  // grab the div element and empty out the rows so that we can re-add the rows
+  const wineJS = document.getElementById('wine-js');
+  wineJS.innerHTML = ""
+
+//filter by wine type
+Wine.filterByType = Wine.all.filter(wine => wine.wineType);
+//filter by if it's a favorite
+Wine.favoriteWines = Wine.all.filter(wine => wine.favorite);
 // resetting what the filteredWines are based on the selection (filteredSelection)
-// Wine.filteredWines = Wine.filteredSelection == "all" ? [...Wine.favoriteWines] : Wine.favoriteWines.filter(wine => wine.wineType === Wine.filteredSelection)
+Wine.filteredWines = Wine.filteredSelection == null ? [...Wine.all] : Wine.all.filter(wine => wine.wineType === Wine.filteredSelection)
+
+
+
+  Wine.filteredWines.forEach(function(wine){
+    wineJS.innerHTML += wine.render();
+  })
+
+  document.getElementById('type-filter').addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("yayyy");
+      })
+  }
+
 }
 
 // formats table rows for wine index
