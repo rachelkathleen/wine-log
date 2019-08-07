@@ -12,7 +12,7 @@ class Wine < ApplicationRecord
   accepts_nested_attributes_for :country, reject_if: :all_blank
   accepts_nested_attributes_for :varietal, reject_if: :all_blank
 
-  validates :vintage, :user_id, :producer, :wine_name, presence: true
+  validates :vintage, :user_id, :producer, :wine_name, :wine_type, presence: true
   validates :rating, numericality: { less_than_or_equal_to: 10, greater_than: 0,  only_integer: true }
   validates :picture, content_type: ["image/png", "image/jpeg", "image/jpg"]
 

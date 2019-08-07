@@ -8,6 +8,17 @@
   </div>
 </div>
 
+<form class="filter">
+    <div class="col-6">
+      <%= label :wine_type, "Type:" %><br>
+      <%= select_tag :wine_type,
+        options_for_select(Wine::WINE_TYPES.map {|t| t}), id: "filter-by-type", placeholder: "Filter by Wine Type", class: "js-example-basic-single", multiple: false, include_blank: true%>
+    </div>
+  <input type="submit" value="Filter">
+</form>
+
+
+
 <div class="container">
   <div class="top-container">
   <h5 align="center"><b>All Wines</b></h5>
