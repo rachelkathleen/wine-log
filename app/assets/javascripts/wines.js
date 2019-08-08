@@ -38,7 +38,7 @@ function showPicture(wine) {
 function wineModal(wine) {
     const wineLink = "/wines/"+`${wine.id}`
     return (`<div class="modal-body" background-color="white">
-              <div class="top-container" style="width:80%">
+              <div class="top-container" style="height:150px">
                 <h5 align="center"><b>${wine.producer} - ${wine.wine_name}</b></h5>
               </div>
                ${showPicture(wine)}
