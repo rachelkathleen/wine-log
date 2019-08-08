@@ -31,14 +31,14 @@ Wine.prototype.tableHTML = function() {
             </tr>`
           }
 function showPicture(wine) {
-  const winePicture = wine.picture ? `<div style="border: 1px solid #220F24" class="picture"><img src="${wine.picture}" style="width:60%"></div>` : ""
+  const winePicture = wine.picture ? `<div style="border: 1px solid #220F24" class="picture"><img src="${wine.picture}" style="height:150px"></div>` : ""
   return winePicture
 }
 // format for interior of wine modal
 function wineModal(wine) {
     const wineLink = "/wines/"+`${wine.id}`
     return (`<div class="modal-body" background-color="white">
-              <div class="top-container" style="height:150px">
+              <div class="top-container" style="height:80%">
                 <h5 align="center"><b>${wine.producer} - ${wine.wine_name}</b></h5>
               </div>
                ${showPicture(wine)}
