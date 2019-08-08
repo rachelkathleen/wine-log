@@ -31,31 +31,28 @@ Wine.prototype.tableHTML = function() {
             </tr>`
           }
 function showPicture(wine) {
-  const winePicture = wine.picture ? `<div class="picture"><img src="${wine.picture}" style="width:60%"></div>` : ""
+  const winePicture = wine.picture ? `<div style="border: 1px solid #220F24" class="picture"><img src="${wine.picture}" style="width:60%"></div>` : ""
   return winePicture
 }
 // format for interior of wine modal
 function wineModal(wine) {
     const wineLink = "/wines/"+`${wine.id}`
-    return (`<div class="modal-header">
-               <h2 class="modal-title" id="exampleModalLabel"><b>${wine.producer} - ${wine.wine_name}</b></h3>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
+    return (`<div class="modal-body" background-color="white">
+              <div class="top-container">
+                <h5 align="center"><b>${wine.producer} - ${wine.wine_name}</b></h5>
+              </div>
                ${showPicture(wine)}
                <div>
-                  <ul class="list-group list-group-flush">
+                  <ul class="list-group list-group-flush" style="border: 1px solid #220F24">
                      <li class="list-group-item"><b>Country:</b> ${wine.country.country_name}</li>
                      <li class="list-group-item"><b>Vintage:</b> ${wine.vintage}</li>
                      <li class="list-group-item"><b>Varietal:</b> ${wine.varietal.varietal_name}</li>
-                     <li class="list-group-item"><b>Rating:</b> ${wine.rating}</li>
+                     <li class="list-group-item"><b>Type:</b> ${wine.wine_type}</li>
                   </ul>
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="link_button"><a href="${wineLink}">View Details</a></button>
+               </div><br>
+              <div align="center" background-color="white">
+                 <button align="center" type="button" class="link_button"><a href="${wineLink}">View Details</a></button><br>
+              </div>
             </div>`)
           }
 
