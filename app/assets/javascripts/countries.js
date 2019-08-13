@@ -4,9 +4,25 @@ $(function() {
     listeningPageLoad()
 })
 class Country {
+    static all = []
+
     constructor(json) {
         this.country_name = json.country_name;
         this.id = json.id
+        Country.all.push(this)
+    }
+
+    render(){
+      const formatHTML = this.formatHTML()
+      const listDiv = document.getElementById('list')
+      listDiv.innerHTML += formatHTML
+    }
+
+    static firstFive() {
+        let five = Country.all.slice(0, 5)
+        five.forEach(function(country) {
+          country.render()
+        })
     }
 }
 // HTML for the countries list
@@ -19,10 +35,12 @@ function listeningPageLoad() {
     $.get('/countries' + '.json', function(jsonData) {
         jsonData.forEach(function(data) {
             const countryData = new Country(data)
-            const formatHTML = countryData.formatHTML()
-            const listDiv = document.getElementById('list')
-            listDiv.innerHTML += formatHTML
+            // countryData.render()
+            // const formatHTML = countryData.formatHTML()
+            // const listDiv = document.getElementById('list')
+            // listDiv.innerHTML += formatHTML
         });
+        Country.firstFive()
         // creates event listener for click on a country, prevents the default action, then fetches
         // the json data for each object and displays it in the specified div
         $(".country-link").on("click", function(event) {
