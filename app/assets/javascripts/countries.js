@@ -22,11 +22,18 @@ class Country {
       return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
     }
 
-    static firstFive() {
+    static displayFirstFive() {
         let five = Country.all.slice(0, 5)
         five.forEach(function(country) {
           country.render()
         })
+    }
+
+    static createCountries(jsonData) {
+      jsonData.forEach(function(data) {
+          const countryData = new Country(data)
+      });
+
     }
 }
 
@@ -34,14 +41,8 @@ class Country {
 // from the prototype method, then sets the inner html of specified div to the formatted html
 function listeningPageLoad() {
     $.get('/countries' + '.json', function(jsonData) {
-        jsonData.forEach(function(data) {
-            const countryData = new Country(data)
-            // countryData.render()
-            // const formatHTML = countryData.formatHTML()
-            // const listDiv = document.getElementById('list')
-            // listDiv.innerHTML += formatHTML
-        });
-        Country.firstFive()
+        Country.createCountries(jsonData)
+        Country.displayFirstFive()
         // creates event listener for click on a country, prevents the default action, then fetches
         // the json data for each object and displays it in the specified div
         $(".country-link").on("click", function(event) {
