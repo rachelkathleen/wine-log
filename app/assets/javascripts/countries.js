@@ -18,6 +18,10 @@ class Country {
       listDiv.innerHTML += formatHTML
     }
 
+    formatHTML(){
+      return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
+    }
+
     static firstFive() {
         let five = Country.all.slice(0, 5)
         five.forEach(function(country) {
@@ -25,10 +29,7 @@ class Country {
         })
     }
 }
-// HTML for the countries list
-Country.prototype.formatHTML = function() {
-    return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
-}
+
 // fetches the countries json data, sets variables for each country object, the formatted html
 // from the prototype method, then sets the inner html of specified div to the formatted html
 function listeningPageLoad() {
