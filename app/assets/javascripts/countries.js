@@ -29,6 +29,12 @@ class Country {
         })
     }
 
+    static displayAll() {
+        Country.all.forEach(function(country) {
+          country.render()
+        })
+    }
+
     static createCountries(jsonData) {
       jsonData.forEach(function(data) {
           const countryData = new Country(data)
@@ -42,7 +48,7 @@ class Country {
 function listeningPageLoad() {
     $.get('/countries' + '.json', function(jsonData) {
         Country.createCountries(jsonData)
-        Country.displayFirstFive()
+        Country.displayAll()
         // creates event listener for click on a country, prevents the default action, then fetches
         // the json data for each object and displays it in the specified div
         $(".country-link").on("click", function(event) {
@@ -65,8 +71,9 @@ function listeningPageLoad() {
         })
     });
 }
-// search bar
-function searchFunction() {
+
+function countrySearchFunction() {
+    console.log("hello world")
     // Declare variables
     var input, filter, dl, dt, a, i, txtValue;
     input = document.getElementById('myInput');
