@@ -22,12 +22,12 @@ class Country {
       return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
     }
 
-    static displayFirstFive() {
-        let five = Country.all.slice(0, 5)
-        five.forEach(function(country) {
-          country.render()
-        })
-    }
+    // static displayFirstFive() {
+    //     let five = Country.all.slice(0, 5)
+    //     five.forEach(function(country) {
+    //       country.render()
+    //     })
+    // }
 
     static displayAll() {
         Country.all.forEach(function(country) {
@@ -41,7 +41,38 @@ class Country {
       });
 
     }
-}
+
+   formatWines(){
+      return `<div class="container">
+                <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
+                <dd>
+                ${country.wines.map(function(wine) {
+                    return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
+                  })
+                  .join("")}
+              </div>`
+    }
+
+    static showWines(){
+      $(".country-link").on("click", function(event) {
+          event.preventDefault();
+          const id = $(this).data("id");
+          fetch(`/countries/${id}/wines.json`)
+              .then(function(response) {
+                  return response.json();
+              }).then(function(country) {
+                  $("#wines").html(`<div class="container">
+                                      <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
+                                      <dd>
+                                      ${country.wines.map(function(wine) {
+                                          return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
+                                        })
+                                        .join("")}
+                                    </div>`)
+                });
+              })
+            }
+          }
 
 // fetches the countries json data, sets variables for each country object, the formatted html
 // from the prototype method, then sets the inner html of specified div to the formatted html
@@ -49,29 +80,12 @@ function listeningPageLoad() {
     $.get('/countries' + '.json', function(jsonData) {
         Country.createCountries(jsonData)
         Country.displayAll()
-        // creates event listener for click on a country, prevents the default action, then fetches
-        // the json data for each object and displays it in the specified div
-        $(".country-link").on("click", function(event) {
-            event.preventDefault();
-            const id = $(this).data("id");
-            fetch(`/countries/${id}/wines.json`)
-                .then(function(response) {
-                    return response.json();
-                }).then(function(country) {
-                    $("#wines").html(`<div class="container">
-                                  <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
-                                  <dd>
-                                  ${country.wines.map(function(wine) {
-                                      return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
-                                    })
-                                    .join("")}
-                                    </div>`)
-
-                })
-        })
+        Country.showWines()
     });
 }
 
+
+//search bar
 function countrySearchFunction() {
     console.log("hello world")
     // Declare variables
