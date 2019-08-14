@@ -3,5 +3,9 @@
   "private": true,
   "dependencies": {
     "chosen-js": "^1.8.7"
+  },
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-dev-server": "^3.8.0"
   }
 }
