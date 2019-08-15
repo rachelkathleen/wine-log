@@ -5,7 +5,7 @@ $(function() {
 })
 class Wine {
 
-  static all = []
+  // static all = []
 
     constructor(json) {
         this.id = json.id;
@@ -22,7 +22,7 @@ class Wine {
         this.producer = json.producer;
         this.wine_aromas = json.wine_aromas;
         this.wine_tasting_terms = json.wine_tasting_terms
-        Wine.all.push(this)
+        // Wine.all.push(this)
     }
 }
 
