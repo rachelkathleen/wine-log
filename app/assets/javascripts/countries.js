@@ -4,44 +4,83 @@ $(function() {
     listeningPageLoad()
 })
 class Country {
+    const all = []
+
     constructor(json) {
         this.country_name = json.country_name;
         this.id = json.id
+        Country.all.push(this)
     }
-}
-// HTML for the countries list
-Country.prototype.formatHTML = function() {
-    return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
-}
+
+    render(){
+      const formatHTML = this.formatHTML()
+      const listDiv = document.getElementById('list')
+      listDiv.innerHTML += formatHTML
+    }
+
+    formatHTML(){
+      return `<dt><a data-id='${this.id}' class="black-link country-link"href="countries/${this.id}/wines">${this.country_name}</a></dt>`
+    }
+
+    // static displayFirstFive() {
+    //     let five = Country.all.slice(0, 5)
+    //     five.forEach(function(country) {
+    //       country.render()
+    //     })
+    // }
+
+    static displayAll() {
+        Country.all.forEach(function(country) {
+          country.render()
+        })
+    }
+
+    static createCountries(jsonData) {
+      jsonData.forEach(function(data) {
+          const countryData = new Country(data)
+      });
+
+    }
+
+   formatWines(){
+      return `<div class="container">
+                <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
+                <dd>
+                ${country.wines.map(function(wine) {
+                    return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
+                  })
+                  .join("")}
+              </div>`
+    }
+
+    static showWines(){
+      $(".country-link").on("click", function(event) {
+          event.preventDefault();
+          const id = $(this).data("id");
+          fetch(`/countries/${id}/wines.json`)
+              .then(function(response) {
+                  return response.json();
+              }).then(function(country) {
+                  $("#wines").html(`<div class="container">
+                                      <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
+                                      <dd>
+                                      ${country.wines.map(function(wine) {
+                                          return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
+                                        })
+                                        .join("")}
+                                    </div>`)
+                });
+              })
+            }
+          }
+
 // fetches the countries json data, sets variables for each country object, the formatted html
 // from the prototype method, then sets the inner html of specified div to the formatted html
 function listeningPageLoad() {
     $.get('/countries' + '.json', function(jsonData) {
-        jsonData.forEach(function(data) {
-            const countryData = new Country(data)
-            const formatHTML = countryData.formatHTML()
-            const listDiv = document.getElementById('list')
-            listDiv.innerHTML += formatHTML
-        });
-        // creates event listener for click on a country, prevents the default action, then fetches
-        // the json data for each object and displays it in the specified div
-        $(".country-link").on("click", function(event) {
-            event.preventDefault();
-            const id = $(this).data("id");
-            fetch(`/countries/${id}/wines.json`)
-                .then(function(response) {
-                    return response.json();
-                }).then(function(country) {
-                    $("#wines").html(`<div class="container">
-                                  <dt>There are ${country.wines.length} wines from ${country.country_name}</dt>
-                                  <dd>
-                                  ${country.wines.map(function(wine) {
-                                      return `<dd><a class="black-link" href="/wines/${wine.id}">${wine.wine_name}</a></dd>`;
-                                    })
-                                    .join("")}
-                                    </div>`)
-                })
-        })
+        Country.createCountries(jsonData)
+        Country.displayAll()
+        Country.showWines()
     });
 }
 

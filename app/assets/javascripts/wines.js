@@ -5,7 +5,7 @@ $(function() {
 })
 class Wine {
 
-  static all = []
+  // static all = []
 
     constructor(json) {
         this.id = json.id;
