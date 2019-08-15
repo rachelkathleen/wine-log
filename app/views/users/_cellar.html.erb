@@ -14,18 +14,20 @@
 </div>
 <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for wines...">
 
-<div class="table-responsive">
+<div class="table-responsive pagination">
   <table class="u-full-width">
-  <thead class="table-head">
-    <tr>
-      <th scope="col" style="padding-left: 40px">Producer</th>
-      <th scope="col">Name</th>
-      <th scope="col">Vintage</th>
-    </tr>
-  </thead>
-  <tbody id="wine-js" data-user-id="<%= @user.id %>">
-        <!-- should show wines -->
-  </tbody>
-</table>
-</div>
+    <thead class="table-head">
+      <tr>
+        <th scope="col" style="padding-left: 40px">Producer</th>
+        <th scope="col">Name</th>
+        <th scope="col">Vintage</th>
+      </tr>
+    </thead>
+    <tbody class="tableList" id="wine-js" data-user-id="<%= @user.id %>">
+          <!-- should show wines -->
+    </tbody>
+  </table>
+  <span class="pageButton outline-none" id="button_prev">Prev</span>
+  <span id="page_number" class="outline-none"></span>
+  <span class="pageButton outline-none" id="button_next">Next</span>
 </div>
