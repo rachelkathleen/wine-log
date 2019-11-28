@@ -8,7 +8,7 @@ class LearnController < ApplicationController
   end
 
   def glossary
-    #index of tasting terms with or without search params
+    #index of tasting terms with or without search param
     @terms = params[:search] ? TastingTerm.glossary_search(params[:search]) : TastingTerm.order(:term)
   end
 
